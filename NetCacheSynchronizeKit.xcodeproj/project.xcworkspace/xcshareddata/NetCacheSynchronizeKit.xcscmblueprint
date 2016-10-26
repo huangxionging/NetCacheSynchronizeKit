@@ -1,0 +1,34 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "67869d44-0647-49ce-b36c-980011c0aae9++8763" : {
+
+    },
+    "67869d44-0647-49ce-b36c-980011c0aae9++9220" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "67869d44-0647-49ce-b36c-980011c0aae9++8763" : 0,
+    "67869d44-0647-49ce-b36c-980011c0aae9++9220" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4361E904-4E35-432A-A85A-8C6C5601C299",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "67869d44-0647-49ce-b36c-980011c0aae9++8763" : "NetCacheSynchronizeKit\/NetCacheSynchronizeKit\/AFNetworking\/",
+    "67869d44-0647-49ce-b36c-980011c0aae9++9220" : "NetCacheSynchronizeKit\/NetCacheSynchronizeKit\/FMDB\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NetCacheSynchronizeKit",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "NetCacheSynchronizeKit.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.0.11\/product_movnow",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67869d44-0647-49ce-b36c-980011c0aae9++8763"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.0.11\/product_movnow",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67869d44-0647-49ce-b36c-980011c0aae9++9220"
+    }
+  ]
+}
