@@ -47,7 +47,7 @@
 - (instancetype)initWithDataStoreName:(NSString *)dataStoreName {
     NSAssert(dataStoreName, @"存储模型的名字不能为空");
     if (self = [super init]) {
-        self.dataStoreName = dataStoreName;
+        _dataStoreName = dataStoreName;
     }
     return self;
 }
@@ -112,7 +112,7 @@
 - (NSString *) createTableSql {
     
     // sql 语句
-    NSMutableString *mutableSql = [NSMutableString stringWithFormat: @"create table if not exists %@(nc_id integer primary key autoincrement, ", self.dataStoreName];
+    NSMutableString *mutableSql = [NSMutableString stringWithFormat: @"create table if not exists %@(nc_id integer autoincrement, ", self.dataStoreName];
     
     // 数组排序
     NSArray *array = [self.dataStoreTypeDictionary.allValues sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {

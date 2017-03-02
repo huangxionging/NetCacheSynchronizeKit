@@ -34,11 +34,11 @@ typedef NS_ENUM(NSUInteger, NCDataStoreRestraintType) {
 /**
  *  @author huangxiong, 2016/07/14 09:41:27
  *
- *  @brief 数据存储模型名字
+ *  @brief 数据存储模型名字, 也就是表名
  *
  *  @since 1.0
  */
-@property (nonatomic, copy) NSString *dataStoreName;
+@property (nonatomic, copy, readonly) NSString *dataStoreName;
 
 /**
  *  @author huangxiong

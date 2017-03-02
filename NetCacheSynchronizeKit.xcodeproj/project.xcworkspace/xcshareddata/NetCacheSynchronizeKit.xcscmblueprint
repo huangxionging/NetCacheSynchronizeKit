@@ -1,4 +1,5 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "96CC8C934EB2DA6C146B65AE3322F4BCD65DD9F5",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
     "67869d44-0647-49ce-b36c-980011c0aae9++8763" : {
 
@@ -9,12 +10,14 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "67869d44-0647-49ce-b36c-980011c0aae9++8763" : 0,
-    "67869d44-0647-49ce-b36c-980011c0aae9++9220" : 0
+    "67869d44-0647-49ce-b36c-980011c0aae9++9220" : 0,
+    "96CC8C934EB2DA6C146B65AE3322F4BCD65DD9F5" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4361E904-4E35-432A-A85A-8C6C5601C299",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "67869d44-0647-49ce-b36c-980011c0aae9++8763" : "NetCacheSynchronizeKit\/NetCacheSynchronizeKit\/AFNetworking\/",
-    "67869d44-0647-49ce-b36c-980011c0aae9++9220" : "NetCacheSynchronizeKit\/NetCacheSynchronizeKit\/FMDB\/"
+    "67869d44-0647-49ce-b36c-980011c0aae9++9220" : "NetCacheSynchronizeKit\/NetCacheSynchronizeKit\/FMDB\/",
+    "96CC8C934EB2DA6C146B65AE3322F4BCD65DD9F5" : "NetCacheSynchronizeKit\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "NetCacheSynchronizeKit",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -29,6 +32,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.0.11\/product_movnow",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67869d44-0647-49ce-b36c-980011c0aae9++9220"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/huangxionging\/NetCacheSynchronizeKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "96CC8C934EB2DA6C146B65AE3322F4BCD65DD9F5"
     }
   ]
 }
