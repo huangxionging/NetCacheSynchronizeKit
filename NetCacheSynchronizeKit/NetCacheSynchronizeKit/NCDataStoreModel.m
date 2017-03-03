@@ -68,7 +68,12 @@
     return _dataStoreValueDictionary;
 }
 
-#pragma mark- 添加数据
+#pragma mark- 添加字段
+-  (void) addDataStoreItem:(NSString *)item withItemDataType:(NCDataStoreDataType)dataType {
+    [self addDataStoreItem: item withItemDataType:dataType itemRestraintType: NCDataStoreRestraintTypeNone];
+}
+
+#pragma mark- 添加字段
 - (void)addDataStoreItem:(NSString *)item withItemDataType:(NCDataStoreDataType)dataType itemRestraintType:(NCDataStoreRestraintType)restraintType {
     
     // item
@@ -112,7 +117,7 @@
 - (NSString *) createTableSql {
     
     // sql 语句
-    NSMutableString *mutableSql = [NSMutableString stringWithFormat: @"create table if not exists %@(nc_id integer autoincrement, ", self.dataStoreName];
+    NSMutableString *mutableSql = [NSMutableString stringWithFormat: @"create table if not exists %@(nc_id integer primary key autoincrement, ", self.dataStoreName];
     
     // 数组排序
     NSArray *array = [self.dataStoreTypeDictionary.allValues sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
@@ -132,13 +137,13 @@
     
     NSMutableString *valueString = [NSMutableString stringWithString: @" values("];
     
-    for (NSInteger index = 0; index < self.dataStoreValueDictionary.allKeys.count; ++index) {
+    for (NSInteger index = 0; index < self.dataStoreTypeDictionary.allKeys.count; ++index) {
         if (index == 0) {
-            [mutableSql appendFormat: @"%@", self.dataStoreValueDictionary.allKeys[0]];
-            [valueString appendFormat: @":%@", self.dataStoreValueDictionary.allKeys[0]];
+            [mutableSql appendFormat: @"%@", self.dataStoreTypeDictionary.allKeys[0]];
+            [valueString appendFormat: @"?"];
         } else {
-            [mutableSql appendFormat: @", %@", self.dataStoreValueDictionary.allKeys[index]];
-            [valueString appendFormat: @", :%@", self.dataStoreValueDictionary.allKeys[index]];
+            [mutableSql appendFormat: @", %@", self.dataStoreTypeDictionary.allKeys[index]];
+            [valueString appendFormat: @", ?"];
         }
     }
     
@@ -164,6 +169,10 @@
     }
     
     return mutableSql;
+}
+
+- (void) insertDataStoreWith:(NSObject *)model {
+    NSLog(@"%@", [self saveValueSql]);
 }
 
 @end

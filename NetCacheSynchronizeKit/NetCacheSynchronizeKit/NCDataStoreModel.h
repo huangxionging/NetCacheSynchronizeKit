@@ -50,6 +50,15 @@ typedef NS_ENUM(NSUInteger, NCDataStoreRestraintType) {
  *  @return 返回对象
  */
 - (instancetype)initWithDataStoreName: (NSString *)dataStoreName;
+
+
+/**
+ 添加字段
+
+ @param item item 字段
+ @param dataType 数据类型, 约束类型默认为空
+ */
+-  (void) addDataStoreItem:(NSString *)item withItemDataType:(NCDataStoreDataType)dataType;
 /**
  *  @author huangxiong
  *
@@ -70,6 +79,16 @@ typedef NS_ENUM(NSUInteger, NCDataStoreRestraintType) {
  *  @param item    item 是数据项, 但必须已存在, 即使用 addDataStoreItem 添加过
  */
 - (void) addDataStoreObject: (id) object ForItem: (NSString *) item;
+
+
+/**
+ 创建表单 API
+
+ @return sql
+ */
+- (NSString *) createTableSql;
+
+- (void) insertDataStoreWith: (NSObject *)model;
 
 
 @end
