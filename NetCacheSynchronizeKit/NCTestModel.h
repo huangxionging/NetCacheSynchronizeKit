@@ -40,6 +40,9 @@
  */
 @property (nonatomic, copy) NSString *gender;
 
+@property (nonatomic, assign) NSInteger index;
+
+
 + (instancetype) modelWithDiction: (NSDictionary *)diction;
 
 @end
