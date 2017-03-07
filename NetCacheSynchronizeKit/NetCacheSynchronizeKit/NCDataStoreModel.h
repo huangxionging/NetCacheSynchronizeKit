@@ -81,14 +81,6 @@ typedef NS_ENUM(NSUInteger, NCDataStoreRestraintType) {
 - (void) addDataStoreObject: (id) object ForItem: (NSString *) item;
 
 
-/**
- 创建表单 API
-
- @return sql
- */
-- (NSString *) createTableSql;
-
-- (void) insertDataStoreWith: (NSObject *)model;
 
 
 @end

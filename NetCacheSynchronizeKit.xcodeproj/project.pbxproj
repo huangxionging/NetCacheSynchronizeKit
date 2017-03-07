@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F210720C1E6E571000D7695D /* NCDataStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F210720B1E6E571000D7695D /* NCDataStoreManager.m */; };
+		F21072311E6E82D700D7695D /* NCDispatchMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F21072301E6E82D700D7695D /* NCDispatchMessageManager.m */; };
+		F21072341E6EB5B400D7695D /* NCDataStoreItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F21072331E6EB5B400D7695D /* NCDataStoreItemModel.m */; };
 		F268CBC51E6942A9005CB4A0 /* NCTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F268CBC41E6942A9005CB4A0 /* NCTestModel.m */; };
 		F268CBD41E6955FF005CB4A0 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F268CBCA1E6955FF005CB4A0 /* FMDatabase.m */; };
 		F268CBD51E6955FF005CB4A0 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F268CBCC1E6955FF005CB4A0 /* FMDatabaseAdditions.m */; };
@@ -32,6 +35,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F210720A1E6E571000D7695D /* NCDataStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataStoreManager.h; sourceTree = "<group>"; };
+		F210720B1E6E571000D7695D /* NCDataStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataStoreManager.m; sourceTree = "<group>"; };
+		F210722F1E6E82D700D7695D /* NCDispatchMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDispatchMessageManager.h; sourceTree = "<group>"; };
+		F21072301E6E82D700D7695D /* NCDispatchMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDispatchMessageManager.m; sourceTree = "<group>"; };
+		F21072321E6EB5B400D7695D /* NCDataStoreItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataStoreItemModel.h; sourceTree = "<group>"; };
+		F21072331E6EB5B400D7695D /* NCDataStoreItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataStoreItemModel.m; sourceTree = "<group>"; };
 		F268CBC31E6942A9005CB4A0 /* NCTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCTestModel.h; sourceTree = "<group>"; };
 		F268CBC41E6942A9005CB4A0 /* NCTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCTestModel.m; sourceTree = "<group>"; };
 		F268CBC91E6955FF005CB4A0 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -160,8 +169,14 @@
 				F2B2B72D1D2E41A500F7F0D7 /* NCSynchronizeManager.m */,
 				F2F357511D36488D00BA0FAE /* NCDataStoreModel.h */,
 				F2F357521D36488D00BA0FAE /* NCDataStoreModel.m */,
+				F21072321E6EB5B400D7695D /* NCDataStoreItemModel.h */,
+				F21072331E6EB5B400D7695D /* NCDataStoreItemModel.m */,
+				F210720A1E6E571000D7695D /* NCDataStoreManager.h */,
+				F210720B1E6E571000D7695D /* NCDataStoreManager.m */,
 				F2A412281E6CFC80008E2761 /* NSObject+Property.h */,
 				F2A412291E6CFC80008E2761 /* NSObject+Property.m */,
+				F210722F1E6E82D700D7695D /* NCDispatchMessageManager.h */,
+				F21072301E6E82D700D7695D /* NCDispatchMessageManager.m */,
 			);
 			path = NetCacheSynchronizeKit;
 			sourceTree = "<group>";
@@ -257,7 +272,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B2B74A1D2E533F00F7F0D7 /* AFSecurityPolicy.m in Sources */,
+				F21072341E6EB5B400D7695D /* NCDataStoreItemModel.m in Sources */,
 				F2B2B74C1D2E533F00F7F0D7 /* AFURLResponseSerialization.m in Sources */,
+				F210720C1E6E571000D7695D /* NCDataStoreManager.m in Sources */,
 				F268CBD41E6955FF005CB4A0 /* FMDatabase.m in Sources */,
 				F2B2B7181D2E410A00F7F0D7 /* ViewController.m in Sources */,
 				F2A4122A1E6CFC80008E2761 /* NSObject+Property.m in Sources */,
@@ -265,6 +282,7 @@
 				F268CBD51E6955FF005CB4A0 /* FMDatabaseAdditions.m in Sources */,
 				F2F357531D36488D00BA0FAE /* NCDataStoreModel.m in Sources */,
 				F268CBD61E6955FF005CB4A0 /* FMDatabasePool.m in Sources */,
+				F21072311E6E82D700D7695D /* NCDispatchMessageManager.m in Sources */,
 				F2B2B7481D2E533F00F7F0D7 /* AFHTTPSessionManager.m in Sources */,
 				F268CBD71E6955FF005CB4A0 /* FMDatabaseQueue.m in Sources */,
 				F2B2B74D1D2E533F00F7F0D7 /* AFURLSessionManager.m in Sources */,

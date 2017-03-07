@@ -126,7 +126,7 @@
     
     // 生成的 sql 语句
     [mutableSql appendFormat: @"%@)", [array componentsJoinedByString: @", "]];
-    
+    // 产生创建 表单 sql 语句
     return  mutableSql;
 }
 
@@ -154,6 +154,10 @@
     
     // 返回保存使用的 sql
     return mutableSql;
+}
+
+- (void)insertSql {
+    
 }
 
 - (NSString *)deleteValueSql {
