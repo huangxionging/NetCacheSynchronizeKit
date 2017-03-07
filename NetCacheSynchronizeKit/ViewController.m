@@ -35,8 +35,10 @@
 //    [self.manger setInterfaceOperation:NCInterfaceOperationTypeDelete interface: nil key: @"insert做做_wg"];
   //  [self.manger saveDataWithInterfaceKey: @"insert_wg"  parameter: @{@"uid" : @"2100100", @"value" : @"100", @"date":@"2016-06-20"} needCache: YES cacheParamList: @[@"histID", @"citime", @"value"]];
     NCTestModel *testModel = [NCTestModel modelWithDiction: nil];
+
     NSArray *array = [NCTestModel getProperties];
     NSLog(@"%@", array);
+    NSLog(@"%@", [testModel propertiesDictionary]);
     NCDataStoreModel *dataModel = [[NCDataStoreModel alloc] initWithDataStoreName: @"NCTestModel"];
     [dataModel addDataStoreItem: @"memberId"  withItemDataType:NCDataStoreDataTypeText itemRestraintType:NCDataStoreRestraintTypeUnique];
     [dataModel addDataStoreItem: @"memberPic"  withItemDataType:NCDataStoreDataTypeText];
@@ -58,7 +60,23 @@
     
     [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
         if ([db open]) {
-            [dataModel insertDataStoreWith: nil];
+            NSString * string =[dataModel insertDataStoreWith: nil];
+            
+            [db executeUpdate: string withParameterDictionary: [[NCTestModel modelWithDiction: nil] diction]];
+        }
+        [db close];
+    }];
+    
+    [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
+        if ([db open]) {
+            FMResultSet *resultSet = [db executeQuery: @"select *from NCTestModel where memberId=?", testModel.memberId];
+            while ([resultSet next]) {
+                NSLog(@"查询结果: %@", resultSet);
+                NCTestModel *model = [NCTestModel modelWithDiction: [resultSet resultDictionary]];
+                
+                [model setPropertyValuesForKeysWithDictionary: [resultSet resultDictionary]];
+            }
+            
         }
         [db close];
     }];

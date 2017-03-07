@@ -140,10 +140,10 @@
     for (NSInteger index = 0; index < self.dataStoreTypeDictionary.allKeys.count; ++index) {
         if (index == 0) {
             [mutableSql appendFormat: @"%@", self.dataStoreTypeDictionary.allKeys[0]];
-            [valueString appendFormat: @"?"];
+            [valueString appendFormat: @" :%@", self.dataStoreTypeDictionary.allKeys[index]];
         } else {
             [mutableSql appendFormat: @", %@", self.dataStoreTypeDictionary.allKeys[index]];
-            [valueString appendFormat: @", ?"];
+            [valueString appendFormat: @", :%@", self.dataStoreTypeDictionary.allKeys[index]];
         }
     }
     
@@ -171,8 +171,9 @@
     return mutableSql;
 }
 
-- (void) insertDataStoreWith:(NSObject *)model {
+- (NSString *) insertDataStoreWith:(NSObject *)model {
     NSLog(@"%@", [self saveValueSql]);
+    return [self saveValueSql];
 }
 
 @end

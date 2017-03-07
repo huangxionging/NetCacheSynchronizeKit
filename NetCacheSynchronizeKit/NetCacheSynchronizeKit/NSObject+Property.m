@@ -11,11 +11,7 @@
 
 @implementation NSObject (Property)
 
-
-+ (void)load {
-    
-}
-
+#pragma mark 获得属性列表
 + (NSArray *)getProperties {
     unsigned int count;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
@@ -28,7 +24,7 @@
     return propetiesArray;
 }
 
-
+#pragma mark- 获得有值的属性字典
 - (NSDictionary *)propertiesDictionary {
     NSMutableDictionary *propertiesDictionary = [NSMutableDictionary dictionary];
     NSArray *properties = [[self class] getProperties];
@@ -41,6 +37,20 @@
         }
     }
     return propertiesDictionary;
+}
+
+#pragma mark- 设置通过键值对字典设置属性
+- (void)setPropertyValuesForKeysWithDictionary:(NSDictionary<NSString *,id> *)keyedValues {
+    NSArray *properties = [[self class] getProperties];
+    if (properties.count > 0) {
+        // 遍历属性列表
+        for (NSString *key in properties) {
+            // 属性列表有字段, 并且键值对字典也包含值
+            if (keyedValues[key]) {
+                [self setValue: keyedValues[key] forKey: key];
+            }
+        }
+    }
 }
 
 @end

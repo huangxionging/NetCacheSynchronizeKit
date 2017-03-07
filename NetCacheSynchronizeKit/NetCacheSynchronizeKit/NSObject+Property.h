@@ -21,6 +21,14 @@
 
  @return 字典对象
  */
-- (NSDictionary *) propertiesDictionary;
+- (NSDictionary<NSString *, id> *) propertiesDictionary;
+
+/**
+ 设置属性列表的值
+
+ @param keyedValues 键值对描述
+ */
+- (void) setPropertyValuesForKeysWithDictionary: (NSDictionary<NSString *, id> *)keyedValues;
+
 
 @end

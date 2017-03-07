@@ -45,4 +45,6 @@
 
 + (instancetype) modelWithDiction: (NSDictionary *)diction;
 
+- (NSDictionary *)diction;
+
 @end

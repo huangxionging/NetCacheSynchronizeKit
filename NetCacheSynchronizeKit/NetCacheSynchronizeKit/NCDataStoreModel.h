@@ -88,7 +88,9 @@ typedef NS_ENUM(NSUInteger, NCDataStoreRestraintType) {
  */
 - (NSString *) createTableSql;
 
-- (void) insertDataStoreWith: (NSObject *)model;
+- (NSString *) insertDataStoreWith: (NSObject *)model;
+
+- (BOOL) deleteDataStoreWith:(NSDictionary *)diction;
 
 
 @end
