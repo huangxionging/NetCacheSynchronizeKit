@@ -81,6 +81,7 @@ typedef NS_ENUM(NSUInteger, NCDataStoreRestraintType) {
 - (void) addDataStoreObject: (id) object ForItem: (NSString *) item;
 
 
+<<<<<<< HEAD
 /**
  创建表单 API
 
@@ -91,6 +92,8 @@ typedef NS_ENUM(NSUInteger, NCDataStoreRestraintType) {
 - (NSString *) insertDataStoreWith: (NSObject *)model;
 
 - (BOOL) deleteDataStoreWith:(NSDictionary *)diction;
+=======
+>>>>>>> origin/master
 
 
 @end

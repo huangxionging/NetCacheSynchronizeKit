@@ -47,19 +47,20 @@
     [dataModel addDataStoreItem: @"memberName"  withItemDataType:NCDataStoreDataTypeText itemRestraintType:NCDataStoreRestraintTypeUnique];
     [dataModel addDataStoreItem: @"gender"  withItemDataType:NCDataStoreDataTypeText itemRestraintType:NCDataStoreRestraintTypeUniqueAndNotNull];
     
-    NSLog(@"创建表单 API == %@", [dataModel createTableSql]);
-    [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
-        
-        if ([db open]) {
-            if (![db executeUpdate: dataModel.createTableSql]) {
-                NSLog(@"创建表单");
-            }
-        }
-        [db close];
-    }];
+//    NSLog(@"创建表单 API == %@", [dataModel createTableSql]);
+//    [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
+//        
+//        if ([db open]) {
+//            if (![db executeUpdate: dataModel.createTableSql]) {
+//                NSLog(@"创建表单");
+//            }
+//        }
+//        [db close];
+//    }];
     
     [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
         if ([db open]) {
+<<<<<<< HEAD
             NSString * string =[dataModel insertDataStoreWith: nil];
             
             [db executeUpdate: string withParameterDictionary: [[NCTestModel modelWithDiction: nil] diction]];
@@ -77,6 +78,9 @@
                 [model setPropertyValuesForKeysWithDictionary: [resultSet resultDictionary]];
             }
             
+=======
+//            [dataModel insertDataStoreWith: nil];
+>>>>>>> origin/master
         }
         [db close];
     }];
