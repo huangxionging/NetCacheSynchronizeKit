@@ -25,6 +25,11 @@
  */
 @property (nonatomic, strong) NSMutableDictionary *dataStoreValueDictionary;
 
+/**
+ 项目模型
+ */
+@property (nonatomic, strong) NCDataStoreItemModel *itemModel;
+
 #pragma mark- 私有 API
 - (BOOL) excuteinDatabase: (FMDatabase *)db;
 
@@ -131,7 +136,10 @@
 }
 
 #pragma mark- 保存 sql
-- (NSString *)saveValueSql {
+- (NSString *)saveSql {
+    
+    NSAssert(_itemModel, @"插入数据不能为空");
+    
     // sql 语句
     NSMutableString *mutableSql = [NSMutableString stringWithFormat: @"insert into %@(", self.dataStoreName];
     
@@ -173,6 +181,11 @@
     }
     
     return mutableSql;
+}
+
+#pragma mark- 设置当前 item
+- (void)setCurrentItemModel:(NCDataStoreItemModel *)itemModel{
+    _itemModel = itemModel;
 }
 
 - (NSString *) insertDataStoreWith:(NSObject *)model {

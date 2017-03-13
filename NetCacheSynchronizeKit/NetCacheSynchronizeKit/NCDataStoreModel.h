@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NCDataStoreItemModel.h"
 
 // 数据存储类型
 typedef NS_ENUM(NSUInteger, NCDataStoreDataType) {
@@ -71,29 +72,10 @@ typedef NS_ENUM(NSUInteger, NCDataStoreRestraintType) {
 - (void) addDataStoreItem: (NSString *) item withItemDataType: (NCDataStoreDataType) dataType  itemRestraintType: (NCDataStoreRestraintType) restraintType;
 
 /**
- *  @author huangxiong
- *
- *  @brief
- *
- *  @param object object 必须是对象
- *  @param item    item 是数据项, 但必须已存在, 即使用 addDataStoreItem 添加过
+ 设置当前
+ 
+ @param itemModel item 模型
  */
-- (void) addDataStoreObject: (id) object ForItem: (NSString *) item;
-
-
-<<<<<<< HEAD
-/**
- 创建表单 API
-
- @return sql
- */
-- (NSString *) createTableSql;
-
-- (NSString *) insertDataStoreWith: (NSObject *)model;
-
-- (BOOL) deleteDataStoreWith:(NSDictionary *)diction;
-=======
->>>>>>> origin/master
-
+- (void) setCurrentItemModel:(NCDataStoreItemModel *)itemModel;
 
 @end

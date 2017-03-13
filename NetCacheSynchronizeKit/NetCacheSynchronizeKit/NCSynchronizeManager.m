@@ -166,7 +166,7 @@
 
                 // 保存值
 //                [model addDataStoreObject: interface ForItem: @"nc_interface"];
-                [model addDataStoreObject: key ForItem: @"nc_key"];
+//                [model addDataStoreObject: key ForItem: @"nc_key"];
                 
                 [model excuteinDatabase: db];
                 // 删除语句

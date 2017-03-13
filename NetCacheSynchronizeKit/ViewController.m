@@ -60,17 +60,23 @@
     
     [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
         if ([db open]) {
-<<<<<<< HEAD
-            NSString * string =[dataModel insertDataStoreWith: nil];
+
+//            NSString * string =[dataModel insertDataStoreWith: nil];
             
-            [db executeUpdate: string withParameterDictionary: [[NCTestModel modelWithDiction: nil] diction]];
+//            [db executeUpdate: string withParameterDictionary: [[NCTestModel modelWithDiction: nil] diction]];
         }
         [db close];
     }];
     
     [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
         if ([db open]) {
-            FMResultSet *resultSet = [db executeQuery: @"select *from NCTestModel where memberId=?", testModel.memberId];
+            
+            NSMutableDictionary *diction = [NSMutableDictionary dictionaryWithCapacity: 4];
+            [diction setObject: testModel.memberId  forKey: @"memberId"];
+//            [diction setObject: testModel.memberName forKey: @"memberName"];
+            FMResultSet *resultSet = [db executeQuery: @"select *from NCTestModel where memberId=:memberId" withParameterDictionary: diction];
+            
+//            [db executeQuery: @"" withParameterDictionary: nil];
             while ([resultSet next]) {
                 NSLog(@"查询结果: %@", resultSet);
                 NCTestModel *model = [NCTestModel modelWithDiction: [resultSet resultDictionary]];
@@ -78,9 +84,9 @@
                 [model setPropertyValuesForKeysWithDictionary: [resultSet resultDictionary]];
             }
             
-=======
+
 //            [dataModel insertDataStoreWith: nil];
->>>>>>> origin/master
+
         }
         [db close];
     }];
