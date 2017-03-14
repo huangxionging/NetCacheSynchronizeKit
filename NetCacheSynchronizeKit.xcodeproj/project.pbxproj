@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F210720C1E6E571000D7695D /* NCDataStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F210720B1E6E571000D7695D /* NCDataStoreManager.m */; };
+		F210720C1E6E571000D7695D /* NCDataStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F210720B1E6E571000D7695D /* NCDataStorageManager.m */; };
 		F21072311E6E82D700D7695D /* NCDispatchMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F21072301E6E82D700D7695D /* NCDispatchMessageManager.m */; };
-		F21072341E6EB5B400D7695D /* NCDataStoreItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F21072331E6EB5B400D7695D /* NCDataStoreItemModel.m */; };
+		F21072341E6EB5B400D7695D /* NCDataStorageItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F21072331E6EB5B400D7695D /* NCDataStorageItemModel.m */; };
 		F268CBC51E6942A9005CB4A0 /* NCTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F268CBC41E6942A9005CB4A0 /* NCTestModel.m */; };
 		F268CBD41E6955FF005CB4A0 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F268CBCA1E6955FF005CB4A0 /* FMDatabase.m */; };
 		F268CBD51E6955FF005CB4A0 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F268CBCC1E6955FF005CB4A0 /* FMDatabaseAdditions.m */; };
@@ -31,16 +31,16 @@
 		F2B2B74C1D2E533F00F7F0D7 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B2B73A1D2E533F00F7F0D7 /* AFURLResponseSerialization.m */; };
 		F2B2B74D1D2E533F00F7F0D7 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B2B73C1D2E533F00F7F0D7 /* AFURLSessionManager.m */; };
 		F2B2B7541D2E5CB800F7F0D7 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B2B7531D2E5CB800F7F0D7 /* libsqlite3.0.tbd */; };
-		F2F357531D36488D00BA0FAE /* NCDataStoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F357521D36488D00BA0FAE /* NCDataStoreModel.m */; };
+		F2F357531D36488D00BA0FAE /* NCDataStorageTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F357521D36488D00BA0FAE /* NCDataStorageTableModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F210720A1E6E571000D7695D /* NCDataStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataStoreManager.h; sourceTree = "<group>"; };
-		F210720B1E6E571000D7695D /* NCDataStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataStoreManager.m; sourceTree = "<group>"; };
+		F210720A1E6E571000D7695D /* NCDataStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataStorageManager.h; sourceTree = "<group>"; };
+		F210720B1E6E571000D7695D /* NCDataStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataStorageManager.m; sourceTree = "<group>"; };
 		F210722F1E6E82D700D7695D /* NCDispatchMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDispatchMessageManager.h; sourceTree = "<group>"; };
 		F21072301E6E82D700D7695D /* NCDispatchMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDispatchMessageManager.m; sourceTree = "<group>"; };
-		F21072321E6EB5B400D7695D /* NCDataStoreItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataStoreItemModel.h; sourceTree = "<group>"; };
-		F21072331E6EB5B400D7695D /* NCDataStoreItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataStoreItemModel.m; sourceTree = "<group>"; };
+		F21072321E6EB5B400D7695D /* NCDataStorageItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataStorageItemModel.h; sourceTree = "<group>"; };
+		F21072331E6EB5B400D7695D /* NCDataStorageItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataStorageItemModel.m; sourceTree = "<group>"; };
 		F268CBC31E6942A9005CB4A0 /* NCTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCTestModel.h; sourceTree = "<group>"; };
 		F268CBC41E6942A9005CB4A0 /* NCTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCTestModel.m; sourceTree = "<group>"; };
 		F268CBC91E6955FF005CB4A0 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -82,8 +82,8 @@
 		F2B2B73B1D2E533F00F7F0D7 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		F2B2B73C1D2E533F00F7F0D7 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		F2B2B7531D2E5CB800F7F0D7 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		F2F357511D36488D00BA0FAE /* NCDataStoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataStoreModel.h; sourceTree = "<group>"; };
-		F2F357521D36488D00BA0FAE /* NCDataStoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataStoreModel.m; sourceTree = "<group>"; };
+		F2F357511D36488D00BA0FAE /* NCDataStorageTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataStorageTableModel.h; sourceTree = "<group>"; };
+		F2F357521D36488D00BA0FAE /* NCDataStorageTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataStorageTableModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,12 +167,12 @@
 			children = (
 				F2B2B72C1D2E41A500F7F0D7 /* NCSynchronizeManager.h */,
 				F2B2B72D1D2E41A500F7F0D7 /* NCSynchronizeManager.m */,
-				F2F357511D36488D00BA0FAE /* NCDataStoreModel.h */,
-				F2F357521D36488D00BA0FAE /* NCDataStoreModel.m */,
-				F21072321E6EB5B400D7695D /* NCDataStoreItemModel.h */,
-				F21072331E6EB5B400D7695D /* NCDataStoreItemModel.m */,
-				F210720A1E6E571000D7695D /* NCDataStoreManager.h */,
-				F210720B1E6E571000D7695D /* NCDataStoreManager.m */,
+				F2F357511D36488D00BA0FAE /* NCDataStorageTableModel.h */,
+				F2F357521D36488D00BA0FAE /* NCDataStorageTableModel.m */,
+				F21072321E6EB5B400D7695D /* NCDataStorageItemModel.h */,
+				F21072331E6EB5B400D7695D /* NCDataStorageItemModel.m */,
+				F210720A1E6E571000D7695D /* NCDataStorageManager.h */,
+				F210720B1E6E571000D7695D /* NCDataStorageManager.m */,
 				F2A412281E6CFC80008E2761 /* NSObject+Property.h */,
 				F2A412291E6CFC80008E2761 /* NSObject+Property.m */,
 				F210722F1E6E82D700D7695D /* NCDispatchMessageManager.h */,
@@ -272,15 +272,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2B2B74A1D2E533F00F7F0D7 /* AFSecurityPolicy.m in Sources */,
-				F21072341E6EB5B400D7695D /* NCDataStoreItemModel.m in Sources */,
+				F21072341E6EB5B400D7695D /* NCDataStorageItemModel.m in Sources */,
 				F2B2B74C1D2E533F00F7F0D7 /* AFURLResponseSerialization.m in Sources */,
-				F210720C1E6E571000D7695D /* NCDataStoreManager.m in Sources */,
+				F210720C1E6E571000D7695D /* NCDataStorageManager.m in Sources */,
 				F268CBD41E6955FF005CB4A0 /* FMDatabase.m in Sources */,
 				F2B2B7181D2E410A00F7F0D7 /* ViewController.m in Sources */,
 				F2A4122A1E6CFC80008E2761 /* NSObject+Property.m in Sources */,
 				F2B2B72E1D2E41A500F7F0D7 /* NCSynchronizeManager.m in Sources */,
 				F268CBD51E6955FF005CB4A0 /* FMDatabaseAdditions.m in Sources */,
-				F2F357531D36488D00BA0FAE /* NCDataStoreModel.m in Sources */,
+				F2F357531D36488D00BA0FAE /* NCDataStorageTableModel.m in Sources */,
 				F268CBD61E6955FF005CB4A0 /* FMDatabasePool.m in Sources */,
 				F21072311E6E82D700D7695D /* NCDispatchMessageManager.m in Sources */,
 				F2B2B7481D2E533F00F7F0D7 /* AFHTTPSessionManager.m in Sources */,

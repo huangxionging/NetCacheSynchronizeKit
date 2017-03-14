@@ -1,25 +1,27 @@
 //
-//  NCDataStoreManager.m
+//  NCDataStorageManager.m
 //  NetCacheSynchronizeKit
 //
 //  Created by huangxiong on 2017/3/7.
 //  Copyright © 2017年 huangxiong. All rights reserved.
 //
 
-#import "NCDataStoreManager.h"
+#import "NCDataStorageManager.h"
 #import "NCDispatchMessageManager.h"
 #import "FMDB.h"
 
-@interface NCDataStoreManager ()
+@interface NCDataStorageManager ()
 
 /**
  数据库操作
  */
 @property (nonatomic, strong) FMDatabaseQueue *dataBaseQueue;
 
+@property (nonatomic, strong) NCDataStorageTableModel *dataStorageTableModel;
+
 @end
 
-@implementation NCDataStoreManager
+@implementation NCDataStorageManager
 
 #pragma mark- 合成变量
 @synthesize absolutelyPath = _absolutelyPath, relativePath = _relativePath;
@@ -53,11 +55,11 @@
 }
 
 #pragma mark- 添加模型
-- (void)addDataStoreModel:(NCDataStoreModel *)dataStoreModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure {
+- (void)createDataStorageTableModel:(NCDataStorageTableModel *)dataStorageTableModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure {
     [self.dataBaseQueue inDatabase:^(FMDatabase *db) {
         // 打开数据库
         if ([db open]) {
-            NSString *createSql = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStoreModel method: @"createTableSql", nil];
+            NSString *createSql = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageTableModel method: @"createTableSql", nil];
             if ([db executeUpdate: createSql]) {
                 NSDictionary *diction = @{@"code": @"1000", @"msg" : @"创建成功"};
                 success(diction);
@@ -74,14 +76,15 @@
     
 }
 
-#pragma mark0- 插入数据存储模型
-- (void)insertDataStoreModel:(NCDataStoreModel *)dataStoreModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure {
+#pragma mark- 插入数据存储模型
+- (void)insertDataStorageItemModel:(NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     [self.dataBaseQueue inDatabase:^(FMDatabase *db) {
         // 打开数据库
         if ([db open]) {
-            NSString *createSql = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStoreModel method: @"s", nil];
-            if ([db executeUpdate: createSql]) {
-                NSDictionary *diction = @{@"code": @"1000", @"msg" : @"创建成功"};
+            NSString *addObjectSql = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"addObjectSql", nil];
+            NSDictionary *parameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"parameterDictionary", nil];
+            if ([db executeUpdate: addObjectSql withParameterDictionary: parameter]) {
+                NSDictionary *diction = @{@"code": @"1000", @"msg" : @"插入成功"};
                 success(diction);
             } else {
                 NSError *error = [NSError errorWithDomain: @"com.netCache.createSql" code: 10001 userInfo: @{@"code": @"999", @"msg" : @"创建失败"}];
@@ -93,6 +96,6 @@
         }
         [db close];
     }];
-}
 
+}
 @end

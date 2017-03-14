@@ -7,13 +7,13 @@
 //
 
 #import "NCSynchronizeManager.h"
-#import "NCDataStoreModel.h"
+#import "NCDataStorageTableModel.h"
 #import "FMDatabaseQueue.h"
 #import "FMDatabase.h"
 #import "AFNetworking.h"
 
 // 私有 API 调用
-@interface NCDataStoreModel ()
+@interface NCDataStorageTableModel ()
 
 - (BOOL) excuteinDatabase: (FMDatabase *)db;
 - (NSString *) createTableSql;
@@ -159,10 +159,10 @@
                     return;
                 }
                 
-                NCDataStoreModel *model = [[NCDataStoreModel alloc] initWithDataStoreName: @"nc_interface_table"];
+                NCDataStorageTableModel *model = [[NCDataStorageTableModel alloc] initWithDataStorageTableName: @"nc_interface_table"];
                 // 添加数据项
 //                [model addDataStoreItem: @"nc_interface"  withItemDataType:NCDataStoreDataTypeText itemRestraintType:NCDataStoreRestraintTypeNone];
-                [model addDataStoreItem: @"nc_key" withItemDataType:NCDataStoreDataTypeText itemRestraintType:NCDataStoreRestraintTypeUnique];
+                [model addDataStorageItem: @"nc_key" withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
 
                 // 保存值
 //                [model addDataStoreObject: interface ForItem: @"nc_interface"];
@@ -274,18 +274,18 @@
 #pragma mark- 创建接口表
 - (void) createInterfaceTable {
     
-    NCDataStoreModel *model = [[NCDataStoreModel alloc] initWithDataStoreName: @"nc_interface_table"];
+    NCDataStorageTableModel *model = [[NCDataStorageTableModel alloc] initWithDataStorageTableName: @"nc_interface_table"];
     // 添加数据项
-    [model addDataStoreItem: @"nc_interface"  withItemDataType:NCDataStoreDataTypeText itemRestraintType:NCDataStoreRestraintTypeNone];
+    [model addDataStorageItem: @"nc_interface"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeTypeNone];
     
-    [model addDataStoreItem: @"nc_key" withItemDataType:NCDataStoreDataTypeText itemRestraintType:NCDataStoreRestraintTypeUnique];
+    [model addDataStorageItem: @"nc_key" withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
     
     // 创建数据存储模型
     [self createDataStore: model];
 }
 
 #pragma mark- 创建表
-- (void)createDataStore:(NCDataStoreModel *)dataStoreModel {
+- (void)createDataStore:(NCDataStorageTableModel *)dataStoreModel {
     // 创建接口表
     [self.dataBaseQueue inDatabase:^(FMDatabase *db) {
         if ([db open]) {

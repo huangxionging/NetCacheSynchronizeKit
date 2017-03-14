@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "NCSynchronizeManager.h"
-#import "NCDataStoreModel.h"
+#import "NCDataStorageTableModel.h"
 #import "NCTestModel.h"
 #import "FMDB.h"
 #import "NSObject+Property.h"
@@ -39,13 +39,13 @@
     NSArray *array = [NCTestModel getProperties];
     NSLog(@"%@", array);
     NSLog(@"%@", [testModel propertiesDictionary]);
-    NCDataStoreModel *dataModel = [[NCDataStoreModel alloc] initWithDataStoreName: @"NCTestModel"];
-    [dataModel addDataStoreItem: @"memberId"  withItemDataType:NCDataStoreDataTypeText itemRestraintType:NCDataStoreRestraintTypeUnique];
-    [dataModel addDataStoreItem: @"memberPic"  withItemDataType:NCDataStoreDataTypeText];
-    [dataModel addDataStoreItem: @"age"  withItemDataType:NCDataStoreDataTypeText];
-    [dataModel addDataStoreItem: @"address"  withItemDataType:NCDataStoreDataTypeText];
-    [dataModel addDataStoreItem: @"memberName"  withItemDataType:NCDataStoreDataTypeText itemRestraintType:NCDataStoreRestraintTypeUnique];
-    [dataModel addDataStoreItem: @"gender"  withItemDataType:NCDataStoreDataTypeText itemRestraintType:NCDataStoreRestraintTypeUniqueAndNotNull];
+    NCDataStorageTableModel *dataModel = [NCDataStorageTableModel modelWithDataStorageTableName: @"NCTestModel"];
+    [dataModel addDataStorageItem: @"memberId"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
+    [dataModel addDataStorageItem: @"memberPic"  withItemDataType: NCDataStorageDataTypeText];
+    [dataModel addDataStorageItem: @"age"  withItemDataType: NCDataStorageDataTypeText];
+    [dataModel addDataStorageItem: @"address"  withItemDataType: NCDataStorageDataTypeText];
+    [dataModel addDataStorageItem: @"memberName"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
+    [dataModel addDataStorageItem: @"gender"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUniqueAndNotNull];
     
 //    NSLog(@"创建表单 API == %@", [dataModel createTableSql]);
 //    [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
@@ -58,39 +58,39 @@
 //        [db close];
 //    }];
     
-    [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
-        if ([db open]) {
-
+//    [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
+//        if ([db open]) {
+//
 //            NSString * string =[dataModel insertDataStoreWith: nil];
-            
+//            
 //            [db executeUpdate: string withParameterDictionary: [[NCTestModel modelWithDiction: nil] diction]];
-        }
-        [db close];
-    }];
-    
-    [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
-        if ([db open]) {
-            
-            NSMutableDictionary *diction = [NSMutableDictionary dictionaryWithCapacity: 4];
-            [diction setObject: testModel.memberId  forKey: @"memberId"];
+//        }
+//        [db close];
+//    }];
+//    
+//    [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
+//        if ([db open]) {
+//            
+//            NSMutableDictionary *diction = [NSMutableDictionary dictionaryWithCapacity: 4];
+//            [diction setObject: testModel.memberId  forKey: @"memberId"];
 //            [diction setObject: testModel.memberName forKey: @"memberName"];
-            FMResultSet *resultSet = [db executeQuery: @"select *from NCTestModel where memberId=:memberId" withParameterDictionary: diction];
-            
-//            [db executeQuery: @"" withParameterDictionary: nil];
-            while ([resultSet next]) {
-                NSLog(@"查询结果: %@", resultSet);
-                NCTestModel *model = [NCTestModel modelWithDiction: [resultSet resultDictionary]];
-                
-                [model setPropertyValuesForKeysWithDictionary: [resultSet resultDictionary]];
-            }
-            
-
-//            [dataModel insertDataStoreWith: nil];
-
-        }
-        [db close];
-    }];
-}
+//            FMResultSet *resultSet = [db executeQuery: @"select *from NCTestModel where memberId=:memberId and memberName=:memberName" withParameterDictionary: diction];
+//            
+////            [db executeQuery: @"" withParameterDictionary: nil];
+//            while ([resultSet next]) {
+//                NSLog(@"查询结果: %@", resultSet);
+//                NCTestModel *model = [NCTestModel modelWithDiction: [resultSet resultDictionary]];
+//                
+//                [model setPropertyValuesForKeysWithDictionary: [resultSet resultDictionary]];
+//            }
+//            
+//
+////            [dataModel insertDataStoreWith: nil];
+//
+//        }
+//        [db close];
+//    }];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
