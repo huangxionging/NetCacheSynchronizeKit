@@ -134,35 +134,6 @@
     return mutableSql;
 }
 
-#pragma mark- 修改对象
-- (NSString *)modifyObjectSql {
-    NSAssert(self.obj, @"插入数据不能为空");
-    // 获得对象的属性键值对
-    NSDictionary *dictionary = [self.obj propertiesDictionary];
-    
-    // 对象类名即数据库表名
-    NSString *className = NSStringFromClass([self.obj class]);
-    // sql 语句
-    NSMutableString *mutableSql = [NSMutableString stringWithFormat: @"select *from %@ where", className];
-    
-    
-    // 遍历添加数据
-    for (NSInteger index = 0; index < dictionary.allKeys.count; ++index) {
-        if (index == 0) {
-            [mutableSql appendFormat: @" %@=:%@", dictionary.allKeys[0], dictionary.allKeys[0]];
-            
-        } else {
-            [mutableSql appendFormat: @" and %@=:%@", dictionary.allKeys[index], dictionary.allKeys[index]];
-        }
-    }
-    // 添加后缀
-    [mutableSql appendString: @")"];
-    
-    // 返回保存使用的 sql
-    return mutableSql;
-
-}
-
 - (NSDictionary *)parameterDictionary {
     return [self.obj propertiesDictionary];
 }
@@ -175,7 +146,7 @@
     // 对象类名即数据库表名
     NSString *className = NSStringFromClass([self.obj class]);
     // sql 语句
-    NSMutableString *mutableSql = [NSMutableString stringWithFormat: @"delete *from %@ where", className];
+    NSMutableString *mutableSql = [NSMutableString stringWithFormat: @"delete from %@ where", className];
     
     
     // 遍历添加数据
@@ -187,9 +158,6 @@
             [mutableSql appendFormat: @" and %@=:%@", dictionary.allKeys[index], dictionary.allKeys[index]];
         }
     }
-    // 添加后缀
-    [mutableSql appendString: @")"];
-    
     // 返回保存使用的 sql
     return mutableSql;
 

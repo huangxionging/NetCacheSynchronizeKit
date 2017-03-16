@@ -78,7 +78,7 @@
     
 }
 
-#pragma mark- 插入数据存储模型
+#pragma mark- 插入数据项
 - (void)insertDataStorageItemModel:(NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     [self.dataBaseQueue inDatabase:^(FMDatabase *db) {
         // 打开数据库
@@ -100,14 +100,18 @@
     }];
 }
 
+#pragma mark- 查询数据项
 - (void)queryDataStorageItemModel:(NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     [self.dataBaseQueue inDatabase:^(FMDatabase *db) {
         // 打开数据库
         if ([db open]) {
+            // 获得查询 sql 语句
             NSString *queryObjectSql = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"queryObjectSql", nil];
+            // 获得参数
             NSDictionary *parameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"parameterDictionary", nil];
+            // 查询结果
             FMResultSet *resultSet = [db executeQuery: queryObjectSql withParameterDictionary: parameter];
-            
+            // 遍历查询结果, 输出数组
             NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity: 10];
             while ([resultSet next]) {
                 NSString *className = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"modelName", nil];
@@ -115,7 +119,6 @@
                 [model setPropertyValuesForKeysWithDictionary: [resultSet resultDictionary]];
                 [mutableArray addObject: model];
             }
-            
             NSDictionary *diction = @{@"code": @"1000", @"msg" : @"查询成功", @"data" : mutableArray};
             success(diction);
         } else {
@@ -124,5 +127,112 @@
         }
         [db close];
     }];
+}
+
+#pragma mark- 删除数据项
+- (void)deleteDataStorageItemModel:(NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    [self.dataBaseQueue inDatabase:^(FMDatabase *db) {
+        // 打开数据库
+        if ([db open]) {
+            // 获得删除 sql 语句
+            NSString *deleteObjectSql = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"deleteObjectSql", nil];
+            // 获得参数
+            NSDictionary *parameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"parameterDictionary", nil];
+            // 查询结果
+            BOOL result = [db executeUpdate: deleteObjectSql withParameterDictionary: parameter];
+            if (result == YES) {
+                NSDictionary *diction = @{@"code": @"1000", @"msg" : @"删除成功"};
+                success(diction);
+            } else {
+                NSError *error = [NSError errorWithDomain: @"com.netCache.deleteObjectSql" code: 10001 userInfo: @{@"code": @"999", @"msg" : @"删除失败"}];
+                failure(error);
+            }
+            
+        } else {
+            NSError *error = [NSError errorWithDomain: @"com.netCache.createSql" code: 10001 userInfo: @{@"code": @"999", @"msg" : @"数据库打开失败"}];
+            failure(error);
+        }
+        [db close];
+    }];
+}
+
+#pragma mark- 修改数据项
+- (void)modifyOldDataStorageItemModel:(NCDataStorageItemModel *)oldDataStorageItemModel withNewDataStorageItemModel:(NCDataStorageItemModel *)newDataStorageItemModel success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    NSDictionary *parameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: self method: @"parameterForModifyOldDataStorageItemModel:withNewDataStorageItemModel:", oldDataStorageItemModel, newDataStorageItemModel, nil];
+    
+    if (parameter == nil) {
+        NSError *error = [NSError errorWithDomain: @"com.netCache.modifySql" code: 10001 userInfo: @{@"code": @"999", @"msg" : @"参数错误"}];
+        failure(error);
+        return;
+    }
+    
+    [self.dataBaseQueue inDatabase:^(FMDatabase *db) {
+        NSString *modifySql = parameter[@"modifySql"];
+        NSArray *parameterArray = parameter[@"parameterArray"];
+        // 打开数据库
+        if ([db open]) {
+            // 查询结果
+            BOOL result = [db executeUpdate: modifySql withArgumentsInArray: parameterArray];
+            if (result == YES) {
+                NSDictionary *diction = @{@"code": @"1000", @"msg" : @"修改成功"};
+                success(diction);
+            } else {
+                NSError *error = [NSError errorWithDomain: @"com.netCache.deleteObjectSql" code: 10001 userInfo: @{@"code": @"999", @"msg" : @"修改失败"}];
+                failure(error);
+            }
+            
+        } else {
+            NSError *error = [NSError errorWithDomain: @"com.netCache.createSql" code: 10001 userInfo: @{@"code": @"999", @"msg" : @"数据库打开失败"}];
+            failure(error);
+        }
+        [db close];
+
+    }];
+}
+
+#pragma mark- 产生 sql 语句和参数
+- (NSDictionary *) parameterForModifyOldDataStorageItemModel:(NCDataStorageItemModel *)oldDataStorageItemModel withNewDataStorageItemModel:(NCDataStorageItemModel *)newDataStorageItemModel {
+    NSString *tableName = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: oldDataStorageItemModel method: @"modelName", nil];
+    // 生成表头
+    NSMutableString *modifySql = [NSMutableString stringWithFormat:@"update %@ set ", tableName];
+     NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity: 10];
+    // 新的在前
+    // 遍历新参数字典
+    NSDictionary *newParameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: newDataStorageItemModel method: @"parameterDictionary", nil];
+    [newParameter.allKeys enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx == 0) {
+            // 添加字段
+            [modifySql appendFormat: @"%@=?", obj];
+        } else {
+            // 添加字段
+            [modifySql appendFormat: @", %@=?", obj];
+        }
+        // 添加参数
+        [mutableArray addObject: [newParameter objectForKey: obj]];
+    }];
+    
+    // 添加 where 字段
+    [modifySql appendString: @" where "];
+    // 遍历旧参数字典
+    NSDictionary *oldParameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: oldDataStorageItemModel method: @"parameterDictionary", nil];
+    [oldParameter.allKeys enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx == 0) {
+            // 添加字段
+            [modifySql appendFormat: @"%@=?", obj];
+        } else {
+            // 添加字段
+            [modifySql appendFormat: @" and %@=?", obj];
+        }
+        // 添加参数
+        [mutableArray addObject: [oldParameter objectForKey: obj]];
+    }];
+    
+    // 判断 mutableArray 是否为空
+    if (mutableArray.count == 0){
+        return nil;
+    } else {
+        NSDictionary *parameter = @{@"modifySql" : modifySql, @"parameterArray" : mutableArray};
+        return parameter;
+    }
 }
 @end

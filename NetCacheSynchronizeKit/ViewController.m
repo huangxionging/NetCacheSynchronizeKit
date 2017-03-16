@@ -109,6 +109,28 @@
         NSLog(@"错误:%@", error);
     }];
     
+    // 删除结果
+    [self.storageManager deleteDataStorageItemModel: model success:^(id responceObject) {
+        NSLog(@"删除结果%@", responceObject);
+    } failure:^(NSError *error) {
+        NSLog(@"错误:%@", error);
+    }];
+    model = [NCDataStorageItemModel modelWithObject: testModel];
+    [self.storageManager insertDataStorageItemModel: model success:^(id responceObject) {
+        NSLog(@"插入结果%@", responceObject);
+    } failure:^(NSError *error) {
+        NSLog(@"错误:%@", error);
+    }];
+    
+    NCDataStorageItemModel *newModel = [NCDataStorageItemModel modelWithObject: test];
+    test.memberName = @"黄小仙";
+    test.memberPic = @"http://www.huangxionging.com/huang.png";
+    test.age = @"18";
+    [self.storageManager modifyOldDataStorageItemModel: model withNewDataStorageItemModel: newModel success:^(id responceObject) {
+        NSLog(@"修改结果%@", responceObject);
+    } failure:^(NSError *error) {
+        NSLog(@"错误:%@", error);
+    }];
     
 }
 

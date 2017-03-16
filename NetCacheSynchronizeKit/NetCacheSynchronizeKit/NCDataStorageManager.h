@@ -60,15 +60,6 @@
 - (void) deleteDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure;
 
 /**
- データベースを変更します。修改数据库
- 
- @param dataStorageItemModel 数据存储模型
- @param success 成功回调
- @param failure 失败回调
- */
-- (void) modifyDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure;
-
-/**
  查询数据项
  
  @param dataStorageItemModel 数据存储模型
@@ -77,7 +68,15 @@
  */
 - (void) queryDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure;
 
+/**
+ データベースを変更します。修改数据库
 
+ @param oldDataStorageItemModel 旧数据项
+ @param newDataStorageItemModel 新数据项
+ @param success 成功回调
+ @param failure 失败回调
+ */
+- (void) modifyOldDataStorageItemModel: (NCDataStorageItemModel *)oldDataStorageItemModel withNewDataStorageItemModel: (NCDataStorageItemModel *)newDataStorageItemModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure;
 
 
 @end
