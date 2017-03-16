@@ -33,6 +33,10 @@
     return @{@"age": self.age, @"memberId" : self.memberId, @"memberPic" : self.memberPic, @"address" : self.address, @"memberName" : self.memberName, @"gender" : self.gender};
 }
 
+- (id)valueForUndefinedKey:(NSString *)key {
+    return  nil;
+}
+
 - (void)setValue:(id)value forUndefinedKey:(nonnull NSString *)key {
     NSLog(@"key == %@", key);
 }

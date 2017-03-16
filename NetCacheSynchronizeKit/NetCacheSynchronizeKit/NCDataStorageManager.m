@@ -9,6 +9,7 @@
 #import "NCDataStorageManager.h"
 #import "NCDispatchMessageManager.h"
 #import "FMDB.h"
+#import "NSObject+Property.h"
 
 @interface NCDataStorageManager ()
 
@@ -42,6 +43,7 @@
     
     if (self && relativePath) {
         self.relativePath = relativePath;
+        self.absolutelyPath = [NSHomeDirectory() stringByAppendingPathComponent: _relativePath];
     }
     return self;
 }
@@ -96,6 +98,31 @@
         }
         [db close];
     }];
+}
 
+- (void)queryDataStorageItemModel:(NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    [self.dataBaseQueue inDatabase:^(FMDatabase *db) {
+        // 打开数据库
+        if ([db open]) {
+            NSString *queryObjectSql = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"queryObjectSql", nil];
+            NSDictionary *parameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"parameterDictionary", nil];
+            FMResultSet *resultSet = [db executeQuery: queryObjectSql withParameterDictionary: parameter];
+            
+            NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity: 10];
+            while ([resultSet next]) {
+                NSString *className = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"modelName", nil];
+                NSObject *model = [[NSClassFromString(className) alloc] init];
+                [model setPropertyValuesForKeysWithDictionary: [resultSet resultDictionary]];
+                [mutableArray addObject: model];
+            }
+            
+            NSDictionary *diction = @{@"code": @"1000", @"msg" : @"查询成功", @"data" : mutableArray};
+            success(diction);
+        } else {
+            NSError *error = [NSError errorWithDomain: @"com.netCache.createSql" code: 10001 userInfo: @{@"code": @"999", @"msg" : @"数据库打开失败"}];
+            failure(error);
+        }
+        [db close];
+    }];
 }
 @end

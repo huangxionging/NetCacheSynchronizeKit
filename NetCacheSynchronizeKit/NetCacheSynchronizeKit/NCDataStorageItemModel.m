@@ -55,12 +55,23 @@
 
 @implementation NCDataStorageItemModel
 
-+ (instancetype)modelWithObject:(id)obj {
-    NCDataStorageItemModel *model = [[super alloc] init];
-    if (model && obj) {
-        model.obj = obj;
+#pragma mark- 初始化函数
+- (instancetype)initWithObject:(id)obj {
+    self = [super init];
+    if (self && obj) {
+        self.obj = obj;
     }
-    return model;
+    return self;
+}
+
+#pragma mark- 模型创建函数
++ (instancetype)modelWithObject:(id)obj {
+    return [[super alloc] initWithObject: obj];
+}
+
+#pragma mark- 模型名称
+- (NSString *) modelName {
+    return NSStringFromClass([self.obj class]);
 }
 
 
@@ -119,8 +130,6 @@
         }
     }
     // 添加后缀
-    [mutableSql appendString: @")"];
-    
     // 返回保存使用的 sql
     return mutableSql;
 }

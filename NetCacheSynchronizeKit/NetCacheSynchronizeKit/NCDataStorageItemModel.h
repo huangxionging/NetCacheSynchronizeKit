@@ -18,4 +18,12 @@
  */
 + (instancetype) modelWithObject: (id) obj;
 
+/**
+ 通过对象初始化模型
+ 
+ @param obj 通过对象创建模型
+ @return 模型对象
+ */
+- (instancetype) initWithObject: (id) obj;
+
 @end

@@ -12,15 +12,25 @@
 #import "NCTestModel.h"
 #import "FMDB.h"
 #import "NSObject+Property.h"
+#import "NCDataStorageManager.h"
 
 
 @interface ViewController ()
 
 @property (nonatomic, strong) NCSynchronizeManager *manger;
 
+@property (nonatomic, strong) NCDataStorageManager *storageManager;
+
 @end
 
 @implementation ViewController
+
+- (NCDataStorageManager *)storageManager {
+    if (_storageManager == nil) {
+        _storageManager = [NCDataStorageManager managerWithRelativePath: @"Documents/main.db"];
+    }
+    return _storageManager;
+}
 
 - (NCSynchronizeManager *)manger {
     if (_manger == nil) {
@@ -90,6 +100,16 @@
 //        }
 //        [db close];
 //    }];
+    NCTestModel *test = [[NCTestModel alloc] init];
+    test.memberId = testModel.memberId;
+    NCDataStorageItemModel *model = [NCDataStorageItemModel modelWithObject: test];
+    [self.storageManager queryDataStorageItemModel:model success:^(id responceObject) {
+        NSLog(@"查询结果%@", responceObject);
+    } failure:^(NSError *error) {
+        NSLog(@"错误:%@", error);
+    }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
