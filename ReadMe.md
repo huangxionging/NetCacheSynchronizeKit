@@ -1,6 +1,6 @@
-#NetCacheKit 开发文档
+# NetCacheSynchronizeKit 开发文档
 -----
-本文档为`NetCacheKit` 的开发文档. 架构图
+本文档为`NetCacheSynchronizeKit ` 的开发文档. 架构图
 
 
 ************
@@ -22,4 +22,4 @@
 	* [NCDataStorageItemModel](#NCDataStorageItemModel)
 	* [NSObject+Property](#Property)
 	* [NCDispatchMessageManager](#NCDispatchMessageManager)
-* [三. Net]
+* [三. NetSynchronize](#NetSynchronize)
