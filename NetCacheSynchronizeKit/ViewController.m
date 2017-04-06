@@ -57,6 +57,12 @@
     [dataModel addDataStorageItem: @"memberName"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
     [dataModel addDataStorageItem: @"gender"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUniqueAndNotNull];
     
+    [self.storageManager createDataStorageTableModel: dataModel success:^(id responseObject) {
+        NSLog(@"创建成功");
+    } failure:^(NSError *error) {
+        NSLog(@"创建失败");
+    }];
+    
 //    NSLog(@"创建表单 API == %@", [dataModel createTableSql]);
 //    [self.manger.dataBaseQueue inDatabase:^(FMDatabase *db) {
 //        
@@ -103,21 +109,21 @@
     NCTestModel *test = [[NCTestModel alloc] init];
     test.memberId = testModel.memberId;
     NCDataStorageItemModel *model = [NCDataStorageItemModel modelWithObject: test];
-    [self.storageManager queryDataStorageItemModel:model success:^(id responceObject) {
-        NSLog(@"查询结果%@", responceObject);
+    [self.storageManager queryDataStorageItemModel:model success:^(id responseObject) {
+        NSLog(@"查询结果%@", responseObject);
     } failure:^(NSError *error) {
         NSLog(@"错误:%@", error);
     }];
     
     // 删除结果
-    [self.storageManager deleteDataStorageItemModel: model success:^(id responceObject) {
-        NSLog(@"删除结果%@", responceObject);
+    [self.storageManager deleteDataStorageItemModel: model success:^(id responseObject) {
+        NSLog(@"删除结果%@", responseObject);
     } failure:^(NSError *error) {
         NSLog(@"错误:%@", error);
     }];
     model = [NCDataStorageItemModel modelWithObject: testModel];
-    [self.storageManager insertDataStorageItemModel: model success:^(id responceObject) {
-        NSLog(@"插入结果%@", responceObject);
+    [self.storageManager insertDataStorageItemModel: model success:^(id responseObject) {
+        NSLog(@"插入结果%@", responseObject);
     } failure:^(NSError *error) {
         NSLog(@"错误:%@", error);
     }];
@@ -126,8 +132,8 @@
     test.memberName = @"黄小仙";
     test.memberPic = @"http://www.huangxionging.com/huang.png";
     test.age = @"18";
-    [self.storageManager modifyOldDataStorageItemModel: model withNewDataStorageItemModel: newModel success:^(id responceObject) {
-        NSLog(@"修改结果%@", responceObject);
+    [self.storageManager modifyOldDataStorageItemModel: model withNewDataStorageItemModel: newModel success:^(id responseObject) {
+        NSLog(@"修改结果%@", responseObject);
     } failure:^(NSError *error) {
         NSLog(@"错误:%@", error);
     }];

@@ -34,5 +34,18 @@
 
 ##<a name="DataCache"/>二. DataCache
 ```Objective-C
+	// 创建表单
+ 	NCTestModel *testModel = [NCTestModel modelWithDiction: nil];
+
+    NSArray *array = [NCTestModel getProperties];
+    NSLog(@"%@", array);
+    NSLog(@"%@", [testModel propertiesDictionary]);
+    NCDataStorageTableModel *dataModel = [NCDataStorageTableModel modelWithDataStorageTableName: @"NCTestModel"];
+    [dataModel addDataStorageItem: @"memberId"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
+    [dataModel addDataStorageItem: @"memberPic"  withItemDataType: NCDataStorageDataTypeText];
+    [dataModel addDataStorageItem: @"age"  withItemDataType: NCDataStorageDataTypeText];
+    [dataModel addDataStorageItem: @"address"  withItemDataType: NCDataStorageDataTypeText];
+    [dataModel addDataStorageItem: @"memberName"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
+    [dataModel addDataStorageItem: @"gender"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUniqueAndNotNull];
 int a=b;
 ```

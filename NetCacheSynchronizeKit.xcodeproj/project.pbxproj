@@ -98,6 +98,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F262CB661E94F0E00022C99C /* DataCache */ = {
+			isa = PBXGroup;
+			children = (
+				F2F357511D36488D00BA0FAE /* NCDataStorageTableModel.h */,
+				F2F357521D36488D00BA0FAE /* NCDataStorageTableModel.m */,
+				F21072321E6EB5B400D7695D /* NCDataStorageItemModel.h */,
+				F21072331E6EB5B400D7695D /* NCDataStorageItemModel.m */,
+				F210720A1E6E571000D7695D /* NCDataStorageManager.h */,
+				F210720B1E6E571000D7695D /* NCDataStorageManager.m */,
+			);
+			name = DataCache;
+			sourceTree = "<group>";
+		};
 		F268CBC81E6955FF005CB4A0 /* fmdb */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,12 +180,7 @@
 			children = (
 				F2B2B72C1D2E41A500F7F0D7 /* NCSynchronizeManager.h */,
 				F2B2B72D1D2E41A500F7F0D7 /* NCSynchronizeManager.m */,
-				F2F357511D36488D00BA0FAE /* NCDataStorageTableModel.h */,
-				F2F357521D36488D00BA0FAE /* NCDataStorageTableModel.m */,
-				F21072321E6EB5B400D7695D /* NCDataStorageItemModel.h */,
-				F21072331E6EB5B400D7695D /* NCDataStorageItemModel.m */,
-				F210720A1E6E571000D7695D /* NCDataStorageManager.h */,
-				F210720B1E6E571000D7695D /* NCDataStorageManager.m */,
+				F262CB661E94F0E00022C99C /* DataCache */,
 				F2A412281E6CFC80008E2761 /* NSObject+Property.h */,
 				F2A412291E6CFC80008E2761 /* NSObject+Property.m */,
 				F210722F1E6E82D700D7695D /* NCDispatchMessageManager.h */,
