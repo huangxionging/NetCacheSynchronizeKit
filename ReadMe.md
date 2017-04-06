@@ -34,17 +34,17 @@
 
 ##<a name="DataCache"/>二. DataCache
 ```Objective-c
-// 创建表单 TableName "NCTestModel", 也即是测试模型的类名
-NCTestModel *testModel = [NCTestModel modelWithDiction: nil];
- 	// 表名
- 	NCDataStorageTableModel *dataModel = [NCDataStorageTableModel modelWithDataStorageTableName: @"NCTestModel"];
-    // 添加字段和数据类型
-    [dataModel addDataStorageItem: @"memberId"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
-    [dataModel addDataStorageItem: @"memberPic"  withItemDataType: NCDataStorageDataTypeText];
-    [dataModel addDataStorageItem: @"age"  withItemDataType: NCDataStorageDataTypeText];
-    [dataModel addDataStorageItem: @"address"  withItemDataType: NCDataStorageDataTypeText];
-    [dataModel addDataStorageItem: @"memberName"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
-    [dataModel addDataStorageItem: @"gender"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUniqueAndNotNull];
+	// 创建表单 TableName "NCTestModel", 也即是测试模型的类名
+	NCTestModel *testModel = [NCTestModel modelWithDiction: nil];
+	// 表名
+	NCDataStorageTableModel *dataModel = [NCDataStorageTableModel modelWithDataStorageTableName: @"NCTestModel"];
+	// 添加字段和数据类型
+	[dataModel addDataStorageItem: @"memberId"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
+	[dataModel addDataStorageItem: @"memberPic"  withItemDataType: NCDataStorageDataTypeText];
+	[dataModel addDataStorageItem: @"age"  withItemDataType: NCDataStorageDataTypeText];
+	[dataModel addDataStorageItem: @"address"  withItemDataType: NCDataStorageDataTypeText];
+	[dataModel addDataStorageItem: @"memberName"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
+	[dataModel addDataStorageItem: @"gender"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUniqueAndNotNull];
     
     // 创建表单 self.storageManager  是 NCDataStorageManager 的实例
     [self.storageManager createDataStorageTableModel: dataModel success:^(id responseObject) {

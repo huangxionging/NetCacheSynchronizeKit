@@ -45,10 +45,6 @@
 //    [self.manger setInterfaceOperation:NCInterfaceOperationTypeDelete interface: nil key: @"insert做做_wg"];
   //  [self.manger saveDataWithInterfaceKey: @"insert_wg"  parameter: @{@"uid" : @"2100100", @"value" : @"100", @"date":@"2016-06-20"} needCache: YES cacheParamList: @[@"histID", @"citime", @"value"]];
     NCTestModel *testModel = [NCTestModel modelWithDiction: nil];
-
-    NSArray *array = [NCTestModel getProperties];
-    NSLog(@"%@", array);
-    NSLog(@"%@", [testModel propertiesDictionary]);
     NCDataStorageTableModel *dataModel = [NCDataStorageTableModel modelWithDataStorageTableName: @"NCTestModel"];
     [dataModel addDataStorageItem: @"memberId"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
     [dataModel addDataStorageItem: @"memberPic"  withItemDataType: NCDataStorageDataTypeText];
