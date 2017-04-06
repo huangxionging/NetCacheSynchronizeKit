@@ -39,7 +39,7 @@
  @param success 成功回调
  @param failure 失败回调
  */
-- (void) createDataStorageTableModel: (NCDataStorageTableModel *)dataStorageTableModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure;
+- (void) createDataStorageTableModel: (NCDataStorageTableModel *)dataStorageTableModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
 
 /**
  插入数据项
@@ -48,7 +48,7 @@
  @param success 成功回调
  @param failure 失败回调
  */
-- (void) insertDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure;
+- (void) insertDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
 
 /**
  删除数据项
@@ -57,7 +57,7 @@
  @param success 成功回调
  @param failure 失败回调
  */
-- (void) deleteDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure;
+- (void) deleteDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
 
 /**
  查询数据项
@@ -66,7 +66,7 @@
  @param success 成功回调
  @param failure 失败回调
  */
-- (void) queryDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure;
+- (void) queryDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
 
 /**
  データベースを変更します。修改数据库
@@ -76,7 +76,7 @@
  @param success 成功回调
  @param failure 失败回调
  */
-- (void) modifyOldDataStorageItemModel: (NCDataStorageItemModel *)oldDataStorageItemModel withNewDataStorageItemModel: (NCDataStorageItemModel *)newDataStorageItemModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure;
+- (void) modifyOldDataStorageItemModel: (NCDataStorageItemModel *)oldDataStorageItemModel withNewDataStorageItemModel: (NCDataStorageItemModel *)newDataStorageItemModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
 
 
 @end

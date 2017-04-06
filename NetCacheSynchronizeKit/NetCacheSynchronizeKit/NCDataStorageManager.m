@@ -57,7 +57,7 @@
 }
 
 #pragma mark- 添加模型
-- (void)createDataStorageTableModel:(NCDataStorageTableModel *)dataStorageTableModel success:(void (^)(id responceObject))success failure:(void (^)(NSError *error))failure {
+- (void)createDataStorageTableModel:(NCDataStorageTableModel *)dataStorageTableModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
     [self.dataBaseQueue inDatabase:^(FMDatabase *db) {
         // 打开数据库
         if ([db open]) {
