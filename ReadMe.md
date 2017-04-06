@@ -95,7 +95,7 @@
 ***
 * 2.1 <a name="NCDataStorageManager">NCDataStorageManager
 
-> **NCDataStorageManager** 是数据存储管理器, 具有创建表单, 以及对数据模型的增删查改功能, 相关属性以及 API 如下
+> **NCDataStorageManager** 是数据存储管理器, 具有创建表单, 以及对数据模型的增删查改功能, 相关属性以及 API 如下:
 
 ```Objective-c
 @interface NCDataStorageManager : NSObject
@@ -165,6 +165,85 @@
  @param failure 失败回调
  */
 - (void) modifyOldDataStorageItemModel: (NCDataStorageItemModel *)oldDataStorageItemModel withNewDataStorageItemModel: (NCDataStorageItemModel *)newDataStorageItemModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
+@end
+```
+***
+* 2.2 <a name="NCDataStorageTableModel">NCDataStorageTableModel
+
+> **NCDataStorageTableModel** 是数据存储表模型, 用以描述存入数据库的表名, 字段名, 以及字段对应的数据类型. 相关 API 定义如下:
+
+```Objective-c
+// 数据存储类型
+typedef NS_ENUM(NSUInteger, NCDataStorageDataType) {
+    NCDataStorageDataTypeInteger  = 10001,    // 整数
+    NCDataStorageDataTypeText     = 10002,    // 文本
+    NCDataStorageDataTypeReal     = 10003,    // 实数
+    NCDataStorageDataTypeBinary   = 10004,    // 二进制
+};
+
+// 约束类型
+typedef NS_ENUM(NSUInteger, NCDataStorageRestraintType) {
+    NCDataStorageRestraintTypeTypeNone                = 20001,    // 默认
+    NCDataStorageRestraintTypeNotNull             = 20002,    // 非空约束
+    NCDataStorageRestraintTypeUnique              = 20003,    // 唯一约束
+    NCDataStorageRestraintTypeUniqueAndNotNull    = 20004,    // 非空且唯一
+};
+
+/**
+ *  @author huangxiong
+ *
+ *  @brief 该类用来创建数据存储模型, 存储数据使用
+ */
+@interface NCDataStorageTableModel : NSObject
+
+/**
+ *  @author huangxiong, 2016/07/14 09:41:27
+ *
+ *  @brief 数据存储模型名字, 也就是表名
+ *
+ *  @since 1.0
+ */
+@property (nonatomic, copy, readonly) NSString *dataStorageTableName;
+
+/**
+ *  @author huangxiong
+ *
+ *  @brief 通过存储模型的名字
+ *
+ *  @param dataStoreName 存储模型的名字
+ *
+ *  @return 返回对象
+ */
+- (instancetype)initWithDataStorageTableName: (NSString *)dataStorageTableName;
+
+/**
+ 通过数据存储名创建模型
+
+ @param dataStoreName 存储模型的名字
+ @return 返回对象
+ */
++ (instancetype)modelWithDataStorageTableName: (NSString *)dataStorageTableName;
+
+
+
+/**
+ 添加字段
+
+ @param item item 字段
+ @param dataType 数据类型, 约束类型默认为空
+ */
+-  (void) addDataStorageItem:(NSString *)item withItemDataType:(NCDataStorageDataType)dataType;
+
+/**
+ *  @brief 添加数据存储项和
+ *
+ *  @param item          item
+ *  @param dataType      数据类型
+ *  @param restraintType 约束类型
+ */
+- (void) addDataStorageItem: (NSString *) item withItemDataType: (NCDataStorageDataType) dataType  itemRestraintType: (NCDataStorageRestraintType) restraintType;
+
 
 @end
 ```
