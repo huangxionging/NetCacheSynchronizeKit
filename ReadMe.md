@@ -184,7 +184,7 @@ typedef NS_ENUM(NSUInteger, NCDataStorageDataType) {
 
 // 约束类型
 typedef NS_ENUM(NSUInteger, NCDataStorageRestraintType) {
-    NCDataStorageRestraintTypeTypeNone                = 20001,    // 默认
+    NCDataStorageRestraintTypeTypeNone            = 20001,    // 默认
     NCDataStorageRestraintTypeNotNull             = 20002,    // 非空约束
     NCDataStorageRestraintTypeUnique              = 20003,    // 唯一约束
     NCDataStorageRestraintTypeUniqueAndNotNull    = 20004,    // 非空且唯一
@@ -244,6 +244,60 @@ typedef NS_ENUM(NSUInteger, NCDataStorageRestraintType) {
  */
 - (void) addDataStorageItem: (NSString *) item withItemDataType: (NCDataStorageDataType) dataType  itemRestraintType: (NCDataStorageRestraintType) restraintType;
 
+
+@end
+```
+***
+* 2.3 <a name="NCDataStorageItemModel">NCDataStorageItemModel
+
+> **NCDataStorageItemModel** 是数据存储项模型, 用以描述存入数据库表数据项, 便于数据存储管理器进行数据模型的相关操作. 相关 API 定义如下:
+
+```Objective-c
+@interface NCDataStorageItemModel : NSObject
+
+/**
+ 通过对象创建模型
+
+ @param obj 通过对象创建模型
+ @return 模型对象
+ */
++ (instancetype) modelWithObject: (id) obj;
+
+/**
+ 通过对象初始化模型
+ 
+ @param obj 通过对象创建模型
+ @return 模型对象
+ */
+- (instancetype) initWithObject: (id) obj;
+
+/**
+ 添加对象的 sql 语句
+ 
+ @return sql 语句
+ */
+- (NSString *)addObjectSql;
+
+/**
+ 查询对象的 sql 语句
+ 
+ @return sql 语句
+ */
+- (NSString *)queryObjectSql;
+
+/**
+ 删除对象的 sql 语句
+ 
+ @return sql 语句
+ */
+- (NSString *)deleteObjectSql;
+
+/**
+ 参数字典, 用于配合插入 sql 语句需要填充的参数
+ 
+ @return 参数字典
+ */
+- (NSDictionary *) parameterDictionary;
 
 @end
 ```

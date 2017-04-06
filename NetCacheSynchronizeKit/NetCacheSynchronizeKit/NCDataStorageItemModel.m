@@ -31,13 +31,6 @@
 - (NSString *)queryObjectSql;
 
 /**
- 修改对象的 sql 语句
- 
- @return 修改对象的 sql
- */
-- (NSString *)modifyObjectSql;
-
-/**
  删除对象的 sql 语句
  
  @return sql 语句

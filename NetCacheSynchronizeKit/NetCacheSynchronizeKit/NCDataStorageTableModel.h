@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, NCDataStorageDataType) {
 
 // 约束类型
 typedef NS_ENUM(NSUInteger, NCDataStorageRestraintType) {
-    NCDataStorageRestraintTypeTypeNone                = 20001,    // 默认
+    NCDataStorageRestraintTypeTypeNone            = 20001,    // 默认
     NCDataStorageRestraintTypeNotNull             = 20002,    // 非空约束
     NCDataStorageRestraintTypeUnique              = 20003,    // 唯一约束
     NCDataStorageRestraintTypeUniqueAndNotNull    = 20004,    // 非空且唯一
