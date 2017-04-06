@@ -34,11 +34,11 @@
 
 ##<a name="DataCache"/>二. DataCache
 ```Objective-C
-// 创建表单 TableName "NCTestModel", 也即是测试模型的类名
-NCTestModel *testModel = [NCTestModel modelWithDiction: nil];
-// 表名
- NCDataStorageTableModel *dataModel = [NCDataStorageTableModel modelWithDataStorageTableName: @"NCTestModel"];
- // 添加字段和数据类型
+	// 创建表单 TableName "NCTestModel", 也即是测试模型的类名
+ 	NCTestModel *testModel = [NCTestModel modelWithDiction: nil];
+ 	// 表名
+    NCDataStorageTableModel *dataModel = [NCDataStorageTableModel modelWithDataStorageTableName: @"NCTestModel"];
+    // 添加字段和数据类型
     [dataModel addDataStorageItem: @"memberId"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
     [dataModel addDataStorageItem: @"memberPic"  withItemDataType: NCDataStorageDataTypeText];
     [dataModel addDataStorageItem: @"age"  withItemDataType: NCDataStorageDataTypeText];
