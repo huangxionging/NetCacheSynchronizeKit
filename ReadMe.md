@@ -25,14 +25,14 @@
 	* 4.1 [NSObject+Property](#Property)
 	* 4.2 [NCDispatchMessageManager](#NCDispatchMessageManager)
 
-##<a name="Structure"/> 一. SDK 架构
+## <a name="Structure"/> 一. SDK 架构
  	SDK 分为 DataCache 和 NetSynchronize 以及 UtilityTool 三部分组成
  	DataCache 是基于 FMDB 的数据库 ORM 实现, 无需编写 sql 语句, 可以非常方便的对数据进行增删改查, 而且数据库表名(TableName)就是相应的数据模型的类名. 非常方便的从数据模型映射到数据库.(包含NCDataStorageManager, NCDataStorageTableModel, NCDataStorageItemModel)
  		
  	NetSynchronize 是基于 AFNetWorking 的网络访问, 接口管理, 实现的网络同步工具.
 
 
-##<a name="DataCache"/>二. DataCache
+## <a name="DataCache"/>二. DataCache
 ```Objective-c
 	// 创建表单 TableName "NCTestModel", 也即是测试模型的类名
 	NCTestModel *testModel = [NCTestModel modelWithDiction: nil];
