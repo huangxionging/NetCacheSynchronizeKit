@@ -48,8 +48,8 @@
 	
 	// 创建表单 self.storageManager  是 NCDataStorageManager 的实例
 	[self.storageManager createDataStorageTableModel: dataModel success:^(id responseObject) {
-	NSLog(@"创建成功");
+		NSLog(@"创建成功");
 	} failure:^(NSError *error) {
-	NSLog(@"创建失败");
+		NSLog(@"创建失败");
 	}];
 ```
