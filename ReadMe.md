@@ -55,37 +55,116 @@
 ```
 
 ```Objective-c
-NCTestModel *test = [[NCTestModel alloc] init];
-    test.memberId = testModel.memberId;
-    NCDataStorageItemModel *model = [NCDataStorageItemModel modelWithObject: test];
-    [self.storageManager queryDataStorageItemModel:model success:^(id responseObject) {
+	// 查询数据项
+	NCTestModel *test = [[NCTestModel alloc] init];
+	test.memberId = testModel.memberId;
+	NCDataStorageItemModel *model = [NCDataStorageItemModel modelWithObject: test];
+	[self.storageManager queryDataStorageItemModel:model success:^(id responseObject) {
         NSLog(@"查询结果%@", responseObject);
-    } failure:^(NSError *error) {
+	} failure:^(NSError *error) {
         NSLog(@"错误:%@", error);
-    }];
+	}];
     
-    // 删除结果
-    [self.storageManager deleteDataStorageItemModel: model success:^(id responseObject) {
-        NSLog(@"删除结果%@", responseObject);
-    } failure:^(NSError *error) {
-        NSLog(@"错误:%@", error);
-    }];
-    model = [NCDataStorageItemModel modelWithObject: testModel];
-    [self.storageManager insertDataStorageItemModel: model success:^(id responseObject) {
-        NSLog(@"插入结果%@", responseObject);
-    } failure:^(NSError *error) {
-        NSLog(@"错误:%@", error);
-    }];
-    
-    NCDataStorageItemModel *newModel = [NCDataStorageItemModel modelWithObject: test];
-    test.memberName = @"黄小仙";
-    test.memberPic = @"http://www.huangxionging.com/huang.png";
-    test.age = @"18";
-    [self.storageManager modifyOldDataStorageItemModel: model withNewDataStorageItemModel: newModel success:^(id responseObject) {
-        NSLog(@"修改结果%@", responseObject);
-    } failure:^(NSError *error) {
-        NSLog(@"错误:%@", error);
-    }];
+	// 删除数据
+	[self.storageManager deleteDataStorageItemModel: model success:^(id responseObject) {
+		NSLog(@"删除结果%@", responseObject);
+	} failure:^(NSError *error) {
+		NSLog(@"错误:%@", error);
+	}];
+	
+	// 插入数据项
+	model = [NCDataStorageItemModel modelWithObject: testModel];
+	[self.storageManager insertDataStorageItemModel: model success:^(id responseObject) {
+		NSLog(@"插入结果%@", responseObject);
+	} failure:^(NSError *error) {
+		NSLog(@"错误:%@", error);
+	}];
+	
+   // 修改数据项
+	NCDataStorageItemModel *newModel = [NCDataStorageItemModel modelWithObject: test];
+	test.memberName = @"黄小仙";
+	test.memberPic = @"http://www.huangxionging.com/huang.png";
+	test.age = @"18";
+	[self.storageManager modifyOldDataStorageItemModel: model withNewDataStorageItemModel: newModel success:^(id responseObject) {
+		NSLog(@"修改结果%@", responseObject);
+	} failure:^(NSError *error) {
+		NSLog(@"错误:%@", error);
+	}];
+```
+
+***
+* 2.1 <a name="NCDataStorageManager">NCDataStorageManager
+
+> **NCDataStorageManager** 是数据存储管理器, 具有创建表单, 以及对数据模型的增删查改功能, 相关属性以及 API 如下
+
+```Objective-c
+@interface NCDataStorageManager : NSObject
+
+/**
+ 相对路径
+ */
+@property (nonatomic, copy) NSString *relativePath;
+
+/**
+ 绝对路径
+ */
+@property (nonatomic, copy) NSString *absolutelyPath;
+
+// 管理器
++ (instancetype) manager;
+
+// 通过相对路径创建
++ (instancetype) managerWithRelativePath: (NSString *)relativePath;
+
+// 创建相对路径
+- (instancetype) initWithRelativePath: (NSString *)relativePath;
 
 
+/**
+ 添加数据存储模型, 创建表单, 如果表单已存在, 则不会创建
+ 
+ @param dataStorageTableModel 数据存储模型描述
+ @param success 成功回调
+ @param failure 失败回调
+ */
+- (void) createDataStorageTableModel: (NCDataStorageTableModel *)dataStorageTableModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
+/**
+ 插入数据项
+
+ @param dataStorageItemModel 数据存储模型
+ @param success 成功回调
+ @param failure 失败回调
+ */
+- (void) insertDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
+/**
+ 删除数据项
+ 
+ @param dataStorageItemModel 数据存储模型
+ @param success 成功回调
+ @param failure 失败回调
+ */
+- (void) deleteDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
+/**
+ 查询数据项
+ 
+ @param dataStorageItemModel 数据存储模型
+ @param success 成功回调
+ @param failure 失败回调
+ */
+- (void) queryDataStorageItemModel: (NCDataStorageItemModel *)dataStorageItemModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
+/**
+ 修改数据项
+
+ @param oldDataStorageItemModel 旧数据项
+ @param newDataStorageItemModel 新数据项
+ @param success 成功回调
+ @param failure 失败回调
+ */
+- (void) modifyOldDataStorageItemModel: (NCDataStorageItemModel *)oldDataStorageItemModel withNewDataStorageItemModel: (NCDataStorageItemModel *)newDataStorageItemModel success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure;
+
+@end
 ```
