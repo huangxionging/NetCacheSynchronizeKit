@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F210720C1E6E571000D7695D /* NCDataStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F210720B1E6E571000D7695D /* NCDataStorageManager.m */; };
-		F21072311E6E82D700D7695D /* NCDispatchMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F21072301E6E82D700D7695D /* NCDispatchMessageManager.m */; };
+		F21072311E6E82D700D7695D /* NSDispatchMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F21072301E6E82D700D7695D /* NSDispatchMessageManager.m */; };
 		F21072341E6EB5B400D7695D /* NCDataStorageItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F21072331E6EB5B400D7695D /* NCDataStorageItemModel.m */; };
 		F268CBC51E6942A9005CB4A0 /* NCTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F268CBC41E6942A9005CB4A0 /* NCTestModel.m */; };
 		F268CBD41E6955FF005CB4A0 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F268CBCA1E6955FF005CB4A0 /* FMDatabase.m */; };
@@ -37,8 +37,8 @@
 /* Begin PBXFileReference section */
 		F210720A1E6E571000D7695D /* NCDataStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataStorageManager.h; sourceTree = "<group>"; };
 		F210720B1E6E571000D7695D /* NCDataStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataStorageManager.m; sourceTree = "<group>"; };
-		F210722F1E6E82D700D7695D /* NCDispatchMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDispatchMessageManager.h; sourceTree = "<group>"; };
-		F21072301E6E82D700D7695D /* NCDispatchMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDispatchMessageManager.m; sourceTree = "<group>"; };
+		F210722F1E6E82D700D7695D /* NSDispatchMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDispatchMessageManager.h; sourceTree = "<group>"; };
+		F21072301E6E82D700D7695D /* NSDispatchMessageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDispatchMessageManager.m; sourceTree = "<group>"; };
 		F21072321E6EB5B400D7695D /* NCDataStorageItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataStorageItemModel.h; sourceTree = "<group>"; };
 		F21072331E6EB5B400D7695D /* NCDataStorageItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataStorageItemModel.m; sourceTree = "<group>"; };
 		F268CBC31E6942A9005CB4A0 /* NCTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCTestModel.h; sourceTree = "<group>"; };
@@ -183,8 +183,8 @@
 				F262CB661E94F0E00022C99C /* DataCache */,
 				F2A412281E6CFC80008E2761 /* NSObject+Property.h */,
 				F2A412291E6CFC80008E2761 /* NSObject+Property.m */,
-				F210722F1E6E82D700D7695D /* NCDispatchMessageManager.h */,
-				F21072301E6E82D700D7695D /* NCDispatchMessageManager.m */,
+				F210722F1E6E82D700D7695D /* NSDispatchMessageManager.h */,
+				F21072301E6E82D700D7695D /* NSDispatchMessageManager.m */,
 			);
 			path = NetCacheSynchronizeKit;
 			sourceTree = "<group>";
@@ -292,7 +292,7 @@
 				F268CBD51E6955FF005CB4A0 /* FMDatabaseAdditions.m in Sources */,
 				F2F357531D36488D00BA0FAE /* NCDataStorageTableModel.m in Sources */,
 				F268CBD61E6955FF005CB4A0 /* FMDatabasePool.m in Sources */,
-				F21072311E6E82D700D7695D /* NCDispatchMessageManager.m in Sources */,
+				F21072311E6E82D700D7695D /* NSDispatchMessageManager.m in Sources */,
 				F2B2B7481D2E533F00F7F0D7 /* AFHTTPSessionManager.m in Sources */,
 				F268CBD71E6955FF005CB4A0 /* FMDatabaseQueue.m in Sources */,
 				F2B2B74D1D2E533F00F7F0D7 /* AFURLSessionManager.m in Sources */,

@@ -1,18 +1,18 @@
 //
-//  NCDispatchMessageManager.m
+//  NSDispatchMessageManager.m
 //  NetCacheSynchronizeKit
 //
 //  Created by huangxiong on 2017/3/7.
 //  Copyright © 2017年 huangxiong. All rights reserved.
 //
 
-#import "NCDispatchMessageManager.h"
+#import "NSDispatchMessageManager.h"
 #import <objc/message.h>
 
-@implementation NCDispatchMessageManager
+@implementation NSDispatchMessageManager
 
 + (instancetype)shareManager {
-    static NCDispatchMessageManager *manager = nil;
+    static NSDispatchMessageManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[self alloc] init];
@@ -180,6 +180,11 @@
         case 10: {
             id (*dispatch)(id, SEL, id, id, id, id, id, id, id, id, id, id) = (id (*)(id, SEL, id, id, id, id, id, id, id, id, id, id)) objc_msgSend;
             return dispatch(target, selector, parameterArray[0], parameterArray[1], parameterArray[2], parameterArray[3], parameterArray[4], parameterArray[5],parameterArray[6], parameterArray[7], parameterArray[8], parameterArray[9]);
+            break;
+        }
+        case 11: {
+            id (*dispatch)(id, SEL, id, id, id, id, id, id, id, id, id, id, id) = (id (*)(id, SEL, id, id, id, id, id, id, id, id, id, id, id)) objc_msgSend;
+            return dispatch(target, selector, parameterArray[0], parameterArray[1], parameterArray[2], parameterArray[3], parameterArray[4], parameterArray[5],parameterArray[6], parameterArray[7], parameterArray[8], parameterArray[9], parameterArray[10]);
             break;
         }
         default:

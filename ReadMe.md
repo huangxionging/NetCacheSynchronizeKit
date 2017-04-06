@@ -23,15 +23,14 @@
 * [三. NetSynchronize](#NetSynchronize)
 * [四. UtilityTool](#UtilityTool)
 	* 4.1 [NSObject+Property](#Property)
-	* 4.2 [NCDispatchMessageManager](#NCDispatchMessageManager)
+	* 4.2 [NSDispatchMessageManager](#NSDispatchMessageManager)
 
 ## <a name="Structure"/> 一. SDK 架构
  	SDK 分为 DataCache 和 NetSynchronize 以及 UtilityTool 三部分组成
  	DataCache 是基于 FMDB 的数据库 ORM 实现, 无需编写 sql 语句, 可以非常方便的对数据进行增删改查, 而且数据库表名(TableName)就是相应的数据模型的类名. 非常方便的从数据模型映射到数据库.(包含NCDataStorageManager, NCDataStorageTableModel, NCDataStorageItemModel)
  		
  	NetSynchronize 是基于 AFNetWorking 的网络访问, 接口管理, 实现的网络同步工具.
-
-
+ 	UtilityTool 是 SDK 中的实用工具. (包含NSObject+Property 这个 Category, NCDispatchMessageManager)
 ## <a name="DataCache"/>二. DataCache
 ```Objective-c
 	// 创建表单 TableName "NCTestModel", 也即是测试模型的类名
@@ -93,7 +92,7 @@
 ```
 
 ***
-* 2.1 <a name="NCDataStorageManager">NCDataStorageManager
+* 2.1 <a name="NCDataStorageManager"/>NCDataStorageManager
 
 > **NCDataStorageManager** 是数据存储管理器, 具有创建表单, 以及对数据模型的增删查改功能, 相关属性以及 API 如下:
 
@@ -169,7 +168,7 @@
 @end
 ```
 ***
-* 2.2 <a name="NCDataStorageTableModel">NCDataStorageTableModel
+* 2.2 <a name="NCDataStorageTableModel"/>NCDataStorageTableModel
 
 > **NCDataStorageTableModel** 是数据存储表模型, 用以描述存入数据库的表名, 字段名, 以及字段对应的数据类型. 相关 API 定义如下:
 
@@ -248,7 +247,7 @@ typedef NS_ENUM(NSUInteger, NCDataStorageRestraintType) {
 @end
 ```
 ***
-* 2.3 <a name="NCDataStorageItemModel">NCDataStorageItemModel
+* 2.3 <a name="NCDataStorageItemModel"/>NCDataStorageItemModel
 
 > **NCDataStorageItemModel** 是数据存储项模型, 用以描述存入数据库表数据项, 便于数据存储管理器进行数据模型的相关操作. 相关 API 定义如下:
 
@@ -301,3 +300,11 @@ typedef NS_ENUM(NSUInteger, NCDataStorageRestraintType) {
 
 @end
 ```
+## <a name="NetSynchronize"/>三. NetSynchronize
+
+## <a name="UtilityTool"/>四. UtilityTool
+> **UtilityTool** 是一些实用工具集合, 配合 DataCache 和 NetSynchronize完成工作.
+***
+* 4.1 <a name="Property"/>NSObject+Property
+
+* 4.2 NSDispatchMessageManager

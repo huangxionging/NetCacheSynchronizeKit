@@ -1,5 +1,5 @@
 //
-//  NCDispatchMessageManager.h
+//  NSDispatchMessageManager.h
 //  NetCacheSynchronizeKit
 //
 //  Created by huangxiong on 2017/3/7.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NCDispatchMessageManager : NSObject
+@interface NSDispatchMessageManager : NSObject
 
 
 /**

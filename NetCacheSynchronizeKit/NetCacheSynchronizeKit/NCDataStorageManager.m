@@ -7,7 +7,7 @@
 //
 
 #import "NCDataStorageManager.h"
-#import "NCDispatchMessageManager.h"
+#import "NSDispatchMessageManager.h"
 #import "FMDB.h"
 #import "NSObject+Property.h"
 
@@ -61,7 +61,7 @@
     [self.dataBaseQueue inDatabase:^(FMDatabase *db) {
         // 打开数据库
         if ([db open]) {
-            NSString *createSql = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageTableModel method: @"createTableSql", nil];
+            NSString *createSql = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageTableModel method: @"createTableSql", nil];
             if ([db executeUpdate: createSql]) {
                 NSDictionary *diction = @{@"code": @"1000", @"msg" : @"创建成功"};
                 success(diction);
@@ -83,8 +83,8 @@
     [self.dataBaseQueue inDatabase:^(FMDatabase *db) {
         // 打开数据库
         if ([db open]) {
-            NSString *addObjectSql = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"addObjectSql", nil];
-            NSDictionary *parameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"parameterDictionary", nil];
+            NSString *addObjectSql = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"addObjectSql", nil];
+            NSDictionary *parameter = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"parameterDictionary", nil];
             if ([db executeUpdate: addObjectSql withParameterDictionary: parameter]) {
                 NSDictionary *diction = @{@"code": @"1000", @"msg" : @"插入成功"};
                 success(diction);
@@ -106,15 +106,15 @@
         // 打开数据库
         if ([db open]) {
             // 获得查询 sql 语句
-            NSString *queryObjectSql = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"queryObjectSql", nil];
+            NSString *queryObjectSql = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"queryObjectSql", nil];
             // 获得参数
-            NSDictionary *parameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"parameterDictionary", nil];
+            NSDictionary *parameter = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"parameterDictionary", nil];
             // 查询结果
             FMResultSet *resultSet = [db executeQuery: queryObjectSql withParameterDictionary: parameter];
             // 遍历查询结果, 输出数组
             NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity: 10];
             while ([resultSet next]) {
-                NSString *className = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"modelName", nil];
+                NSString *className = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"modelName", nil];
                 NSObject *model = [[NSClassFromString(className) alloc] init];
                 [model setPropertyValuesForKeysWithDictionary: [resultSet resultDictionary]];
                 [mutableArray addObject: model];
@@ -135,9 +135,9 @@
         // 打开数据库
         if ([db open]) {
             // 获得删除 sql 语句
-            NSString *deleteObjectSql = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"deleteObjectSql", nil];
+            NSString *deleteObjectSql = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"deleteObjectSql", nil];
             // 获得参数
-            NSDictionary *parameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"parameterDictionary", nil];
+            NSDictionary *parameter = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: dataStorageItemModel method: @"parameterDictionary", nil];
             // 查询结果
             BOOL result = [db executeUpdate: deleteObjectSql withParameterDictionary: parameter];
             if (result == YES) {
@@ -158,7 +158,7 @@
 
 #pragma mark- 修改数据项
 - (void)modifyOldDataStorageItemModel:(NCDataStorageItemModel *)oldDataStorageItemModel withNewDataStorageItemModel:(NCDataStorageItemModel *)newDataStorageItemModel success:(void (^)(id))success failure:(void (^)(NSError *))failure {
-    NSDictionary *parameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: self method: @"parameterForModifyOldDataStorageItemModel:withNewDataStorageItemModel:", oldDataStorageItemModel, newDataStorageItemModel, nil];
+    NSDictionary *parameter = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: self method: @"parameterForModifyOldDataStorageItemModel:withNewDataStorageItemModel:", oldDataStorageItemModel, newDataStorageItemModel, nil];
     
     if (parameter == nil) {
         NSError *error = [NSError errorWithDomain: @"com.netCache.modifySql" code: 10001 userInfo: @{@"code": @"999", @"msg" : @"参数错误"}];
@@ -192,13 +192,13 @@
 
 #pragma mark- 产生 sql 语句和参数
 - (NSDictionary *) parameterForModifyOldDataStorageItemModel:(NCDataStorageItemModel *)oldDataStorageItemModel withNewDataStorageItemModel:(NCDataStorageItemModel *)newDataStorageItemModel {
-    NSString *tableName = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: oldDataStorageItemModel method: @"modelName", nil];
+    NSString *tableName = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: oldDataStorageItemModel method: @"modelName", nil];
     // 生成表头
     NSMutableString *modifySql = [NSMutableString stringWithFormat:@"update %@ set ", tableName];
      NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity: 10];
     // 新的在前
     // 遍历新参数字典
-    NSDictionary *newParameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: newDataStorageItemModel method: @"parameterDictionary", nil];
+    NSDictionary *newParameter = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: newDataStorageItemModel method: @"parameterDictionary", nil];
     [newParameter.allKeys enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx == 0) {
             // 添加字段
@@ -214,7 +214,7 @@
     // 添加 where 字段
     [modifySql appendString: @" where "];
     // 遍历旧参数字典
-    NSDictionary *oldParameter = [[NCDispatchMessageManager shareManager] dispatchReturnValueTarget: oldDataStorageItemModel method: @"parameterDictionary", nil];
+    NSDictionary *oldParameter = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget: oldDataStorageItemModel method: @"parameterDictionary", nil];
     [oldParameter.allKeys enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx == 0) {
             // 添加字段
