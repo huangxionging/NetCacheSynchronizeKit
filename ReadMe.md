@@ -13,7 +13,7 @@
 
 
 *************
-##<a name="index"/>目录
+## <a name="index"/>目录
 * [一. SDK 架构](#Structure)
 
 * [二. DataCache](#DataCache)
@@ -52,4 +52,40 @@
 	} failure:^(NSError *error) {
 		NSLog(@"创建失败");
 	}];
+```
+
+```Objective-c
+NCTestModel *test = [[NCTestModel alloc] init];
+    test.memberId = testModel.memberId;
+    NCDataStorageItemModel *model = [NCDataStorageItemModel modelWithObject: test];
+    [self.storageManager queryDataStorageItemModel:model success:^(id responseObject) {
+        NSLog(@"查询结果%@", responseObject);
+    } failure:^(NSError *error) {
+        NSLog(@"错误:%@", error);
+    }];
+    
+    // 删除结果
+    [self.storageManager deleteDataStorageItemModel: model success:^(id responseObject) {
+        NSLog(@"删除结果%@", responseObject);
+    } failure:^(NSError *error) {
+        NSLog(@"错误:%@", error);
+    }];
+    model = [NCDataStorageItemModel modelWithObject: testModel];
+    [self.storageManager insertDataStorageItemModel: model success:^(id responseObject) {
+        NSLog(@"插入结果%@", responseObject);
+    } failure:^(NSError *error) {
+        NSLog(@"错误:%@", error);
+    }];
+    
+    NCDataStorageItemModel *newModel = [NCDataStorageItemModel modelWithObject: test];
+    test.memberName = @"黄小仙";
+    test.memberPic = @"http://www.huangxionging.com/huang.png";
+    test.age = @"18";
+    [self.storageManager modifyOldDataStorageItemModel: model withNewDataStorageItemModel: newModel success:^(id responseObject) {
+        NSLog(@"修改结果%@", responseObject);
+    } failure:^(NSError *error) {
+        NSLog(@"错误:%@", error);
+    }];
+
+
 ```
