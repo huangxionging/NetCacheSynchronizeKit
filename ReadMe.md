@@ -45,9 +45,9 @@
 	[dataModel addDataStorageItem: @"address"  withItemDataType: NCDataStorageDataTypeText];
 	[dataModel addDataStorageItem: @"memberName"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUnique];
 	[dataModel addDataStorageItem: @"gender"  withItemDataType:NCDataStorageDataTypeText itemRestraintType:NCDataStorageRestraintTypeUniqueAndNotNull];
-    
-    // 创建表单 self.storageManager  是 NCDataStorageManager 的实例
-    [self.storageManager createDataStorageTableModel: dataModel success:^(id responseObject) {
+	
+	// 创建表单 self.storageManager  是 NCDataStorageManager 的实例
+	[self.storageManager createDataStorageTableModel: dataModel success:^(id responseObject) {
         NSLog(@"创建成功");
     } failure:^(NSError *error) {
         NSLog(@"创建失败");
