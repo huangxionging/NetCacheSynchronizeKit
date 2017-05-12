@@ -13,6 +13,7 @@
 #import "FMDB.h"
 #import "NSObject+Property.h"
 #import "NCDataStorageManager.h"
+#import "NSDispatchMessageManager.h"
 
 
 @interface ViewController ()
@@ -111,7 +112,7 @@
         NSLog(@"错误:%@", error);
     }];
     
-    // 删除结果
+//    // 删除结果
     [self.storageManager deleteDataStorageItemModel: model success:^(id responseObject) {
         NSLog(@"删除结果%@", responseObject);
     } failure:^(NSError *error) {
@@ -123,7 +124,7 @@
     } failure:^(NSError *error) {
         NSLog(@"错误:%@", error);
     }];
-    
+//
     NCDataStorageItemModel *newModel = [NCDataStorageItemModel modelWithObject: test];
     test.memberName = @"黄小仙";
     test.memberPic = @"http://www.huangxionging.com/huang.png";
@@ -134,7 +135,11 @@
         NSLog(@"错误:%@", error);
     }];
     
+    NCDataStorageItemModel *model1 = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget:[NCDataStorageItemModel class] method: @"modelWithObject:", test, nil];
+    test.memberName = @"sadas";
+    NSLog(@"%@", model1);
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

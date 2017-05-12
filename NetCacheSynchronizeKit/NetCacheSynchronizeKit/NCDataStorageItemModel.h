@@ -10,6 +10,7 @@
 
 @interface NCDataStorageItemModel : NSObject
 
+- (NSString *) modelName;
 /**
  通过对象创建模型
 

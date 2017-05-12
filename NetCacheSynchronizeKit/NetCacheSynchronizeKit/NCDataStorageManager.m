@@ -235,4 +235,8 @@
         return parameter;
     }
 }
+
+- (void)dealloc {
+//    NSLog(@"%@", self);
+}
 @end

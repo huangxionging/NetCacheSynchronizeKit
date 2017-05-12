@@ -304,7 +304,7 @@ typedef NS_ENUM(NSUInteger, NCDataStorageRestraintType) {
 
 ## <a name="UtilityTool"/>四. UtilityTool
 > **UtilityTool** 是一些实用工具集合, 配合 DataCache 和 NetSynchronize完成工作.
-***
-* 4.1 <a name="Property"/>NSObject+Property
 
+
+* 4.1 <a name="Property"/>NSObject+Property
 * 4.2 NSDispatchMessageManager
