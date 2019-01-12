@@ -138,6 +138,8 @@
     NCDataStorageItemModel *model1 = [[NSDispatchMessageManager shareManager] dispatchReturnValueTarget:[NCDataStorageItemModel class] method: @"modelWithObject:", test, nil];
     test.memberName = @"sadas";
     NSLog(@"%@", model1);
+
+    UIImage
 }
 
 

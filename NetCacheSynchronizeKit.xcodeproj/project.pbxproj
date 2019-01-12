@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		340A672921E9EECD00B4A34A /* CMDataStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 340A672821E9EECD00B4A34A /* CMDataStorageManager.m */; };
+		340A672C21E9EEE200B4A34A /* CMDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 340A672B21E9EEE200B4A34A /* CMDataObject.m */; };
 		F210720C1E6E571000D7695D /* NCDataStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F210720B1E6E571000D7695D /* NCDataStorageManager.m */; };
 		F21072311E6E82D700D7695D /* NSDispatchMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F21072301E6E82D700D7695D /* NSDispatchMessageManager.m */; };
 		F21072341E6EB5B400D7695D /* NCDataStorageItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F21072331E6EB5B400D7695D /* NCDataStorageItemModel.m */; };
@@ -35,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		340A672721E9EECD00B4A34A /* CMDataStorageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMDataStorageManager.h; sourceTree = "<group>"; };
+		340A672821E9EECD00B4A34A /* CMDataStorageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMDataStorageManager.m; sourceTree = "<group>"; };
+		340A672A21E9EEE200B4A34A /* CMDataObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMDataObject.h; sourceTree = "<group>"; };
+		340A672B21E9EEE200B4A34A /* CMDataObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CMDataObject.m; sourceTree = "<group>"; };
 		F210720A1E6E571000D7695D /* NCDataStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCDataStorageManager.h; sourceTree = "<group>"; };
 		F210720B1E6E571000D7695D /* NCDataStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCDataStorageManager.m; sourceTree = "<group>"; };
 		F210722F1E6E82D700D7695D /* NSDispatchMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDispatchMessageManager.h; sourceTree = "<group>"; };
@@ -107,6 +113,10 @@
 				F21072331E6EB5B400D7695D /* NCDataStorageItemModel.m */,
 				F210720A1E6E571000D7695D /* NCDataStorageManager.h */,
 				F210720B1E6E571000D7695D /* NCDataStorageManager.m */,
+				340A672721E9EECD00B4A34A /* CMDataStorageManager.h */,
+				340A672821E9EECD00B4A34A /* CMDataStorageManager.m */,
+				340A672A21E9EEE200B4A34A /* CMDataObject.h */,
+				340A672B21E9EEE200B4A34A /* CMDataObject.m */,
 			);
 			name = DataCache;
 			sourceTree = "<group>";
@@ -235,12 +245,12 @@
 		F2B2B7051D2E410A00F7F0D7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = huangxiong;
 				TargetAttributes = {
 					F2B2B70C1D2E410A00F7F0D7 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 6EW99E5PRN;
+						DevelopmentTeam = MZX9J7U5R6;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -287,6 +297,7 @@
 				F210720C1E6E571000D7695D /* NCDataStorageManager.m in Sources */,
 				F268CBD41E6955FF005CB4A0 /* FMDatabase.m in Sources */,
 				F2B2B7181D2E410A00F7F0D7 /* ViewController.m in Sources */,
+				340A672C21E9EEE200B4A34A /* CMDataObject.m in Sources */,
 				F2A4122A1E6CFC80008E2761 /* NSObject+Property.m in Sources */,
 				F2B2B72E1D2E41A500F7F0D7 /* NCSynchronizeManager.m in Sources */,
 				F268CBD51E6955FF005CB4A0 /* FMDatabaseAdditions.m in Sources */,
@@ -298,6 +309,7 @@
 				F2B2B74D1D2E533F00F7F0D7 /* AFURLSessionManager.m in Sources */,
 				F2B2B7151D2E410A00F7F0D7 /* AppDelegate.m in Sources */,
 				F2B2B7491D2E533F00F7F0D7 /* AFNetworkReachabilityManager.m in Sources */,
+				340A672921E9EECD00B4A34A /* CMDataStorageManager.m in Sources */,
 				F268CBD81E6955FF005CB4A0 /* FMResultSet.m in Sources */,
 				F2B2B7121D2E410A00F7F0D7 /* main.m in Sources */,
 				F2B2B74B1D2E533F00F7F0D7 /* AFURLRequestSerialization.m in Sources */,
@@ -336,14 +348,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -383,14 +403,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -420,7 +448,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6EW99E5PRN;
+				DEVELOPMENT_TEAM = MZX9J7U5R6;
 				INFOPLIST_FILE = NetCacheSynchronizeKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.new-life.NetCacheSynchronizeKit";
@@ -434,7 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6EW99E5PRN;
+				DEVELOPMENT_TEAM = MZX9J7U5R6;
 				INFOPLIST_FILE = NetCacheSynchronizeKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.new-life.NetCacheSynchronizeKit";
